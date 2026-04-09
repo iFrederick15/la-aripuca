@@ -4,7 +4,7 @@
   @apply font-title rounded-xl bg-[#ABA30A] px-6 py-3 font-bold text-white shadow transition-all hover:text-white hover:shadow-xl;
 }
 .buttonHero {
-  @apply font-title rounded-xl px-8 py-4 text-lg font-bold transition-all hover:shadow-lg;
+  @apply font-title rounded-lg px-4 py-2 text-sm font-bold transition-all hover:shadow-lg sm:rounded-xl sm:px-8 sm:py-4 sm:text-lg;
 }
 .material-symbols-outlined {
   font-variation-settings:
