@@ -3,8 +3,7 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/globals/header.astro";
 import Footer from "../components/globals/footer.astro";
-// Aquí importarías tus posts desde archivos markdown o desde un CMS
-// Por ahora usamos datos de ejemplo basados en el blog actual
+
 const posts = [
   {
     slug: "un-sueno-una-construccion",
@@ -23,7 +22,8 @@ const posts = [
     excerpt:
       "Construir La Aripuca fue un desafío titánico. Para darle vida a esta majestuosa estructura, era necesario encontrar troncos de gran tamaño en perfecto estado. Cada pieza cuenta una historia de gigantes caídos y el urgente llamado a proteger lo que aún nos queda.",
     date: "2025-02-21",
-    image: "https://www.aripuca.com.ar/wp-content/uploads/2025/02/Mas-que-un-paseo-.jpg",
+    image:
+      "https://www.aripuca.com.ar/wp-content/uploads/2025/02/Mas-que-un-paseo-.jpg",
     url: "https://www.aripuca.com.ar/post-2/",
     category: "Historia",
     readTime: "4 min",
@@ -175,17 +175,24 @@ function formatDate(dateString: string) {
 
   .filter-btn {
     font-family: var(--font-titulo);
-    padding: 0.75rem 1.5rem;
+    padding: 0.4rem 0.85rem;
     border: 2px solid var(--color-primario);
     background: white;
     color: var(--color-primario);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 1rem;
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+  }
+
+  @media (min-width: 640px) {
+    .filter-btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+    }
   }
 
   .filter-btn:hover,
