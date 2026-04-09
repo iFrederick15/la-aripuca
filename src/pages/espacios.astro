@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/globals/header.astro";
+import Footer from "../components/globals/footer.astro";
+import Hero from "../components/espacios/hero.astro";
+import Termitas from "../components/espacios/termitas.astro";
+import Yatei from "../components/espacios/yatei.astro";
+import Tacuru from "../components/espacios/tacuru.astro";
+import Cucurucho from "../components/espacios/cucurucho.astro";
+import Guaranies from "../components/espacios/guaranies.astro";
+
+import Prefooter from "../components/espacios/prefooter.astro";
+---
+
+<Layout title="Espacios - La Aripuca">
+  <Header />
+  <main class="pt-20">
+    <Hero />
+    <div class="space-y-0">
+      <Termitas />
+      <Yatei />
+      <Cucurucho />
+      <Tacuru />
+      <Guaranies />
+    </div>
+    <Prefooter />
+    <Footer />
+  </main>
+</Layout>

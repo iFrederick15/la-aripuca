@@ -1,11 +1,44 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/globals/header.astro";
+import Hero from "../components/landing/hero.astro";
+import Compromiso from "../components/landing/compromiso.astro";
+import ImagenesLanding from "../components/landing/imagenesLanding.astro";
+import Informacion from "../components/landing/informacion.astro";
+import Testimonios from "../components/landing/testimonios.astro";
+import Contacto from "../components/landing/contacto.astro";
+import Footer from "../components/globals/footer.astro";
+import Tacuaras from "../components/espacios/tacuaras.astro";
+import Guaranies from "../components/espacios/guaranies.astro";
+import Tacuru from "../components/espacios/tacuru.astro";
+import Yatei from "../components/espacios/yatei.astro";
+import Cucurucho from "../components/espacios/cucurucho.astro";
+import Termitas from "../components/espacios/termitas.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="La Aripuca">
+  <Header />
+  <main>
+    <!-- Hero -->
+    <Hero />
+    <!--Sección compromiso -->
+    <Compromiso />
+    <!--Sectores -->
+    <Tacuaras />
+    <Guaranies />
+    <Tacuru />
+    <Yatei />
+    <Cucurucho />
+    <Termitas />
+    <!-- Imagenes en landing -->
+    <ImagenesLanding />
+    <!-- Información -->
+    <Informacion />
+    <!-- Testimonios -->
+    <Testimonios />
+    <!-- Contacto-->
+    <Contacto />
+    <!--Footer -->
+    <Footer />
+  </main>
 </Layout>

@@ -1,0 +1,646 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/globals/header.astro";
+import Footer from "../components/globals/footer.astro";
+
+const fotos = [
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAbr9Isi8Cy2OC9loNrQLloXhaJtrgdZgowOqP1RNq62LiN-ylWXIl4EZFdjNOEKuW1xz-gxILZOOe7Hki92QDqdNjQ5QgkAEIBdv9lrI_tZUgrJQVyEt37BM_zOsrBD1F6frCzMdiLuhJK-kO91rXFJdp9q0oz8c6Z81P9mE74zqqkDUhnCZd-ODTqdb88Kw6Ru1QOIffHhAjBIZDRm7NpE5_cl83B_2jGtfY6hz3peEbpfN7v6wq-Y3EkqNYF3YlP8zejjn9iA4w",
+    alt: "Vista hacia arriba de los enormes troncos que forman La Aripuca",
+    categoria: "arquitectura",
+    titulo: "La Gran Aripuca",
+    descripcion: "Estructura imponente de 500.000 kg de madera recuperada.",
+    tamaño: "grande",
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuD1woI8r8lX1jQLAOPupYdx9z9tGbnGNir_IJTShrQcerpNJj8GuNUjUza41BG0I3RG9HvEvISkFsSo2c_Gwy0k-NSl9zC9iWCuB8PiDQW3UWnGHgv81Ytc2_x8oisWZ0zTrwscOmSpxIUjik-4LDJM4fTO0k4vqtsnNHGxt0hG7pNRTa2aaPng9gKQFJtm7sh_C5CU1ay1-xWBHS-ea-dlX1lZmfsTPh9wqe5Sg1pPuSKnkGA-6IzvUrhpgus-P0i6N36pnVGbjSk",
+    alt: "Tucán Toco vibrante",
+    categoria: "naturaleza",
+    titulo: "Fauna Local",
+    descripcion: "",
+    tamaño: "ancho",
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAG9WOkMWtg_vni1zApuwnyRItUvoaFsQInnh5iZDV1GX-XnXv4XOUGLSL3jR0kXkS4OzA29sV3-MXnTdEnWV8Lnf4laE3rN1meNdDe0gIG0rM1HIC-H7QvUWRh6l8iuSI3dUNWcMAPSkjtKub71Qquj_2KzPeohryYNkEEJznOLotVL3zi0Z8XTOVCfqK2CRoNsuDQ-Obcv0fUhCx2zEqRFboJcIjhmgS6cK5A1YqQdirb3Q8IGUpE0_53vmrpAcGHC70C3SekInk",
+    alt: "Set tradicional de Yerba Mate",
+    categoria: "cultura",
+    titulo: "El Ritual del Mate",
+    descripcion: "",
+    tamaño: "normal",
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuC11TTz1AUxVb6rqolSJ4ycXBVeZG4nwTEGihEPzVV01ZkEOhSUPpZV7dBsKhl32YHfpzwBUbOtypQPJFctEdFt6eME9VvGMX6ofmioLJUuSU_fskK1mzwQVtTKRwJw3Lpfo6FD7XZ9xakC0ATkRz8aKc3kBCx3e6bVYhD1HWVOcaiNbLLU4WVdLNJ9j0lwATGx2rkKYKzqZ2RUFZXIyF9eE6-sgMoqq9rmnztcVrFK4ZIRHniXekE-_INFGQUXcIZmps5vwFh0v0Q",
+    alt: "Cestos tejidos Mbyá Guaraní",
+    categoria: "cultura",
+    titulo: "Arte Mbyá",
+    descripcion: "",
+    tamaño: "normal",
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAQzc2Y0t8JlP6lYTD6yKYF4UQBi530E-3d7_HOYVbhNGTM6bQpT8yydbYMorbo41sPIW859qI-5zDFhJZksoPbMj7FhgKYWPCcJfMurQKVI6sWja0GF-O1yjbV-NL9pyhUar6LBEACV2pxKzOY-kb9JuKvlhacLn0Zu_CE7xJa7qefyJNkk9octcrAKuCbL5DvA8CPvt3aQKNMGj7DocSl1sNqXkVfFRp-FuFjgBQUmGo5gWijZAPf8LS8Oioc5WimZLAVxlisN2Q",
+    alt: "Mariposa Morpho Azul sobre hoja",
+    categoria: "naturaleza",
+    titulo: "Biodiversidad",
+    descripcion: "La fragilidad de la vida misionera.",
+    tamaño: "alto",
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDpNHUWK0RNzd4ZWvkg9OhvJPaKJrj3EYZNZrDyJSs7J5Xlv7QLoz3KoeF_uB7MNdREJMh0wiCPgL4xflmVUx75hmxeJvkhdfsFY_6C60_Thaxiay4xC4VWulUmn6kGuHUKbyGgW-9IxHIH2i8q-fQ_bXVFaSo5LSnQpcquzG1QWk-Htgy6qo9NsMUVp1E0lxGosf6Aa0zslWWNEEHxwh8X3yIcL5UVL5ts42N8zPSNJ_FH4rXL03rmhbvnn7rEzwj4uw9SR1djzvM",
+    alt: "Asado argentino a la parrilla",
+    categoria: "gastronomia",
+    titulo: "Sabor a Tradición",
+    descripcion: "",
+    tamaño: "ancho",
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCUD78WVxf84FgaZQQct4lt1sJOmPZq2V2Z0Qp9Hu2O9tXNJ5kqd8HNGQJUM5Iu8B58wQhpRSXR5E0Qeyy9Xr3C_2sMmQgtYBH6TkvL2Ksem1ww4wtP2HMJPHVmaVCL6CczWyUxG_MXl4GCg7YDeTGm6h2B6NGDHF66caHi_UX3xbDE9AlDnRJM4Bl5eEhuWvWac6isS65PyQQkXVd_HMN73bs5mTfN1ivMIf8AYTBnjtObMxbgJ-rwerqU5NTKVRIInpFL2JwCFJ0",
+    alt: "Bromelia exótica de la selva",
+    categoria: "naturaleza",
+    titulo: "Flora Nativa",
+    descripcion: "",
+    tamaño: "normal",
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAtaIiEc1b9pZkaMEQB6dywC-ZKJRtFM1WCzTTJVuGSgooZkMuGMLNzcmNYCrFzooxG3Bk9rkTg0eIttgrSUjjm2xbsvmdpUtMbI03W7iqFyGR7o9uNazQJmOb4vmBt1FS1RVoZCKXH6MyoSnZJSKe5oMLipzIMfuxL__VB5H2oIPgDOlUVlpafKPFXA5_IK_bLyVkMgeK_UMaOC-3FUdBdF53unZ3nEvbR89zaamD7PiM62k4cP2umPU0Lay3_IexUiOC_VlH8Bkg",
+    alt: "Pequeño picaflor en vuelo",
+    categoria: "naturaleza",
+    titulo: "Picaflores",
+    descripcion: "",
+    tamaño: "normal",
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuB0UspDCefNLMG1as7YooEZC1YONZYO1L09Cjcc7gIGRVeISswkdosV9tib8MMAzsVZLMuk6lihIjM2MqGzTXbknTTU6I6cEpqRd8PuT59sIF0AjvfIh5kmY4-slUxXB4X2g8cMXaWsbFBt31i2dycaZC9E0MTMWPdyJG-bAKwbphZRS3SkVQ_YOLC4_XOmc9Vs0yxoafo8Gg9y1VFPNQrhOsVMArhuFYblbbgjrAsRog1CvwSu7mRRIcV7pe7YNXC_VihCj70TGU4",
+    alt: "Chipá recién horneado",
+    categoria: "gastronomia",
+    titulo: "Chipá Casero",
+    descripcion: "",
+    tamaño: "normal",
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAddpq1hFdqhKQvTF4LU0Tg-ZF5nUFCpAVkHA8THTdYNFUQWJ5ZNn2ic7-12tSI52knwDHdDR63prP5KwEQe2VhOoeV9Fcf4HD40SKnx_SsBzCZSh1SrNrvlAdUwB2gBbHbRkytdZPnsXYOiYeImaPGTJNlWT_O7kH3KGmcE6jZnXQDYKN8dD6m51XoHmv-b-gmNNQGRes0fr7P9TGFpxCchjJS6a_ugBkZsXNKWZvyVtj-5f4QI0hc2oKFYuMaDpeAqhWs4eWgkQw",
+    alt: "Tallados guaraníes de animales en madera",
+    categoria: "cultura",
+    titulo: "Escultura en Madera",
+    descripcion: "Tallados que cobran vida.",
+    tamaño: "ancho",
+  },
+];
+
+const categorias = [
+  "todo",
+  "arquitectura",
+  "naturaleza",
+  "cultura",
+  "gastronomia",
+];
+
+const categoriasLabel: Record<string, string> = {
+  todo: "Todo",
+  arquitectura: "Arquitectura",
+  naturaleza: "Naturaleza",
+  cultura: "Cultura",
+  gastronomia: "Gastronomía",
+};
+
+// Estilos de grid por tamaño
+const gridClasses: Record<string, string> = {
+  grande: "sm:col-span-2 sm:row-span-2",
+  ancho: "sm:col-span-2",
+  alto: "sm:row-span-2",
+  normal: "",
+};
+
+// Fotos a mostrar inicialmente y por cada "ver más"
+const FOTOS_POR_PAGINA = 12;
+
+// Color del overlay según categoría
+const overlayColor: Record<string, string> = {
+  arquitectura: "from-black/70",
+  naturaleza: "from-[#ABA30A]/90",
+  cultura: "from-[#8C3B17]/80",
+  gastronomia: "from-[#8C3B17]/80",
+};
+---
+
+<Layout title="Galería de fotos - La Aripuca">
+  <Header />
+  <main>
+    <!-- Hero -->
+    <section
+      class="relative flex h-125 items-center justify-center overflow-hidden bg-[#ABA30A]/5"
+    >
+      <div class="absolute inset-0 z-0">
+        <div
+          class="h-full w-full bg-cover bg-center opacity-30 grayscale-20"
+          style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA_h8hk-1D3FLBeTi87lBb9nboFauVW5ZCAhCD597StP9Gb5tsJB5hkcXp7ZrQqOi4aZifrkcSl7kdWuRPxbxLgwNkdRQVy6Y05ERoJpbHoS2zI-QP1X6dAbU76W8aFfXbnh-HWxzjdkiRhD59iyt_asdJ2Caf1xYFRKMoZGgrVCV5fD0aC8uZUytEsDjxiQz6vRnPsQ1DYYhh79YYG72EKPMWTZgd763ZfclPES-aswM4YmGRorXLtIEocoEZNAM1EOFQsAMJYry4')"
+        >
+        </div>
+        <div
+          class="to-surface absolute inset-0 bg-linear-to-b from-transparent"
+        >
+        </div>
+      </div>
+      <div class="relative z-10 max-w-4xl px-6 text-center">
+        <h1
+          class="font-title mb-4 text-5xl font-bold text-[#8C3B17] md:text-7xl"
+        >
+          Galería de fotos
+        </h1>
+        <h2 class="font-title mb-4 text-2xl text-[#ABA30A] italic md:text-3xl">
+          Ventanas a la Selva
+        </h2>
+        <p
+          class="font-body mx-auto max-w-2xl text-lg leading-relaxed text-stone-600 md:text-xl"
+        >
+          Un viaje a través de los sentidos. Descubrí la biodiversidad, la
+          arquitectura milenaria y las raíces culturales de nuestra tierra.
+        </p>
+      </div>
+    </section>
+
+    <!-- Category Filters -->
+    <section
+      class="sticky top-23 z-40 border-b border-stone-100 bg-white/90 py-4 shadow-sm backdrop-blur-md"
+    >
+      <div class="no-scrollbar mx-auto max-w-7xl overflow-x-auto px-4">
+        <div class="flex min-w-max justify-center gap-3" id="filtros">
+          {
+            categorias.map((cat) => (
+              <button
+                class="filtro-btn rounded-full border-2 px-6 py-2 text-xs font-bold tracking-widest uppercase transition-all duration-300"
+                data-categoria={cat}
+              >
+                {categoriasLabel[cat]}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic Gallery Grid -->
+    <section class="mx-auto max-w-7xl px-4 py-12 sm:px-8">
+      <div
+        class="grid auto-rows-[200px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        id="galeria"
+      >
+        {
+          fotos.map((foto, index) => (
+            <div
+              class:list={[
+                "foto-item group relative cursor-pointer overflow-hidden rounded-xl bg-stone-100 transition-all duration-500",
+                gridClasses[foto.tamaño],
+                index >= FOTOS_POR_PAGINA ? "hidden" : "",
+              ]}
+              data-categoria={foto.categoria}
+              data-index={index}
+              data-paginated={index >= FOTOS_POR_PAGINA ? "hidden" : "visible"}
+            >
+              <img
+                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                alt={foto.alt}
+                src={foto.src}
+                loading="lazy"
+              />
+              <div
+                class:list={[
+                  "absolute inset-0 flex flex-col justify-end bg-linear-to-t via-transparent to-transparent p-4 opacity-0 transition-opacity duration-500 group-hover:opacity-100 sm:p-6",
+                  overlayColor[foto.categoria],
+                ]}
+              >
+                {foto.categoria && (
+                  <span class="mb-1 text-xs font-bold tracking-widest text-[#BFB065] uppercase">
+                    {categoriasLabel[foto.categoria]}
+                  </span>
+                )}
+                <h3
+                  class:list={[
+                    "font-title text-white",
+                    foto.tamaño === "grande"
+                      ? "text-2xl"
+                      : foto.tamaño === "ancho"
+                        ? "text-xl"
+                        : "text-sm",
+                  ]}
+                >
+                  {foto.titulo}
+                </h3>
+                {foto.descripcion && (
+                  <p class="font-body mt-1 text-sm text-white/80 italic">
+                    {foto.descripcion}
+                  </p>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Ver Más -->
+      <div class="mt-16 text-center" id="ver-mas-container">
+        <button
+          id="btn-ver-mas"
+          class="inline-flex items-center gap-2 rounded-full border-2 border-[#ABA30A] px-10 py-4 font-bold text-[#ABA30A] transition-all hover:bg-[#ABA30A] hover:text-white"
+        >
+          VER MÁS FOTOS
+          <span
+            id="fotos-restantes"
+            class="rounded-full bg-[#ABA30A]/10 px-3 py-0.5 text-sm"></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div
+      id="lightbox"
+      class="pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-black/90 opacity-0 backdrop-blur-sm transition-opacity duration-300"
+    >
+      <!-- Cerrar -->
+      <button
+        id="lightbox-cerrar"
+        class="absolute top-5 right-5 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:scale-110 hover:bg-white/20"
+        aria-label="Cerrar"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Anterior -->
+      <button
+        id="lightbox-prev"
+        class="absolute left-3 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:scale-110 hover:bg-white/20 sm:left-6"
+        aria-label="Anterior"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+
+      <!-- Siguiente -->
+      <button
+        id="lightbox-next"
+        class="absolute right-3 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:scale-110 hover:bg-white/20 sm:right-6"
+        aria-label="Siguiente"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"
+          ></path>
+        </svg>
+      </button>
+
+      <!-- Imagen + Info -->
+      <div class="flex max-h-[90vh] max-w-[90vw] flex-col items-center">
+        <img
+          id="lightbox-img"
+          class="max-h-[75vh] max-w-full rounded-xl object-contain shadow-2xl transition-transform duration-300"
+          src=""
+          alt=""
+        />
+        <div class="mt-4 text-center">
+          <h3 id="lightbox-titulo" class="font-title text-xl text-white"></h3>
+          <p
+            id="lightbox-desc"
+            class="font-body mt-1 text-sm text-white/60 italic"
+          >
+          </p>
+          <span
+            id="lightbox-cat"
+            class="mt-2 inline-block rounded-full bg-white/10 px-4 py-1 text-xs font-bold tracking-widest text-[#BFB065] uppercase"
+          ></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Banner -->
+    <section class="bg-[#F2F2F2] px-4 py-20 sm:px-8">
+      <div
+        class="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-[#8C3B17] p-10 text-white shadow-2xl md:p-16"
+      >
+        <div
+          class="absolute top-0 right-0 -mt-20 -mr-20 h-64 w-64 rounded-full bg-[#ABA30A]/20 blur-3xl"
+        >
+        </div>
+        <div class="relative z-10 grid items-center gap-12 md:grid-cols-2">
+          <div>
+            <h2 class="font-title mb-6 text-4xl leading-tight md:text-5xl">
+              Vivilo en primera persona
+            </h2>
+            <p class="font-body text-lg leading-relaxed text-white/80 italic">
+              Nada se compara con sentir el aroma del monte y la frescura de las
+              maderas centenarias. Te esperamos para compartir el legado de la
+              selva.
+            </p>
+          </div>
+          <div class="flex justify-center md:justify-end">
+            <button
+              class="rounded-full bg-[#ABA30A] px-12 py-5 text-xl font-bold text-white shadow-xl transition-all hover:scale-105 hover:bg-[#BFB065] active:scale-95"
+            >
+              <a href="https://wa.me/5493757315512">Planificá tu visita</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // ============ DATA ============
+    const FOTOS_POR_PAGINA = 12;
+
+    const fotosData = [
+      {
+        categoria: "arquitectura",
+        titulo: "La Gran Aripuca",
+        descripcion: "Estructura imponente de 500.000 kg de madera recuperada.",
+      },
+      { categoria: "naturaleza", titulo: "Fauna Local", descripcion: "" },
+      { categoria: "cultura", titulo: "El Ritual del Mate", descripcion: "" },
+      { categoria: "cultura", titulo: "Arte Mbyá", descripcion: "" },
+      {
+        categoria: "naturaleza",
+        titulo: "Biodiversidad",
+        descripcion: "La fragilidad de la vida misionera.",
+      },
+      {
+        categoria: "gastronomia",
+        titulo: "Sabor a Tradición",
+        descripcion: "",
+      },
+      { categoria: "naturaleza", titulo: "Flora Nativa", descripcion: "" },
+      { categoria: "naturaleza", titulo: "Picaflores", descripcion: "" },
+      { categoria: "gastronomia", titulo: "Chipá Casero", descripcion: "" },
+      {
+        categoria: "cultura",
+        titulo: "Escultura en Madera",
+        descripcion: "Tallados que cobran vida.",
+      },
+    ];
+
+    const categoriasLabel: Record<string, string> = {
+      todo: "Todo",
+      arquitectura: "Arquitectura",
+      naturaleza: "Naturaleza",
+      cultura: "Cultura",
+      gastronomia: "Gastronomía",
+    };
+
+    // ============ ELEMENTS ============
+    const filtros = document.querySelectorAll<HTMLButtonElement>(".filtro-btn");
+    const items = document.querySelectorAll<HTMLElement>(".foto-item");
+    const lightbox = document.getElementById("lightbox")!;
+    const lbImg = document.getElementById("lightbox-img") as HTMLImageElement;
+    const lbTitulo = document.getElementById("lightbox-titulo")!;
+    const lbDesc = document.getElementById("lightbox-desc")!;
+    const lbCat = document.getElementById("lightbox-cat")!;
+    const btnCerrar = document.getElementById("lightbox-cerrar")!;
+    const btnPrev = document.getElementById("lightbox-prev")!;
+    const btnNext = document.getElementById("lightbox-next")!;
+    const btnVerMas = document.getElementById("btn-ver-mas")!;
+    const verMasContainer = document.getElementById("ver-mas-container")!;
+    const fotosRestantesSpan = document.getElementById("fotos-restantes")!;
+
+    let categoriaActual = "todo";
+    let indiceActual = 0;
+    let fotosVisibles = FOTOS_POR_PAGINA;
+
+    // ============ PAGINACIÓN ============
+    function getItemsFiltrados(): HTMLElement[] {
+      return Array.from(items).filter((item) => {
+        const cat = item.dataset.categoria;
+        return categoriaActual === "todo" || cat === categoriaActual;
+      });
+    }
+
+    function actualizarPaginacion() {
+      const filtrados = getItemsFiltrados();
+      const total = filtrados.length;
+      const restantes = Math.max(0, total - fotosVisibles);
+
+      // Mostrar/ocultar cada item
+      items.forEach((item) => {
+        const cat = item.dataset.categoria;
+        const coincideFiltro =
+          categoriaActual === "todo" || cat === categoriaActual;
+
+        if (!coincideFiltro) {
+          // No coincide con el filtro: ocultar
+          item.style.opacity = "0";
+          item.style.transform = "scale(0.95)";
+          setTimeout(() => {
+            item.classList.add("hidden");
+            item.style.display = "";
+          }, 300);
+        } else {
+          // Coincide con el filtro: verificar paginación
+          const indexEnFiltrados = filtrados.indexOf(item);
+
+          if (indexEnFiltrados < fotosVisibles) {
+            // Dentro del límite: mostrar
+            item.classList.remove("hidden");
+            item.style.opacity = "0";
+            item.style.transform = "scale(0.95)";
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                item.style.opacity = "1";
+                item.style.transform = "scale(1)";
+              });
+            });
+          } else {
+            // Fuera del límite: ocultar
+            item.classList.add("hidden");
+          }
+        }
+      });
+
+      // Actualizar botón "Ver más"
+      if (restantes > 0) {
+        verMasContainer.classList.remove("hidden");
+        fotosRestantesSpan.textContent = `+${restantes}`;
+      } else {
+        verMasContainer.classList.add("hidden");
+      }
+    }
+
+    // ============ FILTROS ============
+    function actualizarFiltroActivo() {
+      filtros.forEach((btn) => {
+        const cat = btn.dataset.categoria;
+        if (cat === categoriaActual) {
+          btn.classList.add(
+            "bg-[#8C3B17]",
+            "text-white",
+            "border-[#8C3B17]",
+            "shadow-lg",
+          );
+          btn.classList.remove("border-stone-100", "text-stone-600");
+        } else {
+          btn.classList.remove(
+            "bg-[#8C3B17]",
+            "text-white",
+            "border-[#8C3B17]",
+            "shadow-lg",
+          );
+          btn.classList.add("border-stone-100", "text-stone-600");
+        }
+      });
+    }
+
+    filtros.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        categoriaActual = btn.dataset.categoria || "todo";
+        fotosVisibles = FOTOS_POR_PAGINA; // Resetear paginación al cambiar filtro
+        actualizarFiltroActivo();
+        actualizarPaginacion();
+      });
+    });
+
+    // Botón "Ver más"
+    btnVerMas.addEventListener("click", () => {
+      fotosVisibles += FOTOS_POR_PAGINA;
+      actualizarPaginacion();
+    });
+
+    // Estado inicial
+    actualizarFiltroActivo();
+    actualizarPaginacion();
+
+    // ============ LIGHTBOX ============
+    function getItemsMostrados(): HTMLElement[] {
+      return Array.from(items).filter((i) => !i.classList.contains("hidden"));
+    }
+
+    function abrirLightbox(index: number) {
+      const visibles = getItemsMostrados();
+      indiceActual = index;
+      const item = visibles[indiceActual];
+      if (!item) return;
+
+      const img = item.querySelector("img")!;
+      const idx = parseInt(item.dataset.index || "0");
+      const data = fotosData[idx];
+
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbTitulo.textContent = data.titulo;
+      lbDesc.textContent = data.descripcion;
+      lbCat.textContent = categoriasLabel[data.categoria] || data.categoria;
+
+      lightbox.classList.remove("opacity-0", "pointer-events-none");
+      lightbox.classList.add("opacity-100", "pointer-events-auto");
+      document.body.style.overflow = "hidden";
+    }
+
+    function cerrarLightbox() {
+      lightbox.classList.add("opacity-0", "pointer-events-none");
+      lightbox.classList.remove("opacity-100", "pointer-events-auto");
+      document.body.style.overflow = "";
+    }
+
+    function navegarLightbox(dir: number) {
+      const visibles = getItemsMostrados();
+      indiceActual = (indiceActual + dir + visibles.length) % visibles.length;
+      const item = visibles[indiceActual];
+      const img = item.querySelector("img")!;
+      const idx = parseInt(item.dataset.index || "0");
+      const data = fotosData[idx];
+
+      // Transición suave
+      lbImg.style.opacity = "0";
+      lbImg.style.transform =
+        dir > 0 ? "translateX(40px)" : "translateX(-40px)";
+
+      setTimeout(() => {
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        lbTitulo.textContent = data.titulo;
+        lbDesc.textContent = data.descripcion;
+        lbCat.textContent = categoriasLabel[data.categoria] || data.categoria;
+        lbImg.style.transform =
+          dir > 0 ? "translateX(-40px)" : "translateX(40px)";
+
+        requestAnimationFrame(() => {
+          lbImg.style.opacity = "1";
+          lbImg.style.transform = "translateX(0)";
+        });
+      }, 200);
+    }
+
+    // Click en fotos
+    items.forEach((item) => {
+      item.addEventListener("click", () => {
+        const visibles = getItemsMostrados();
+        const idx = visibles.indexOf(item);
+        if (idx !== -1) abrirLightbox(idx);
+      });
+    });
+
+    // Botones lightbox
+    btnCerrar.addEventListener("click", cerrarLightbox);
+    btnPrev.addEventListener("click", () => navegarLightbox(-1));
+    btnNext.addEventListener("click", () => navegarLightbox(1));
+
+    // Cerrar con fondo
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) cerrarLightbox();
+    });
+
+    // Teclado
+    document.addEventListener("keydown", (e) => {
+      if (lightbox.classList.contains("pointer-events-none")) return;
+      if (e.key === "Escape") cerrarLightbox();
+      if (e.key === "ArrowLeft") navegarLightbox(-1);
+      if (e.key === "ArrowRight") navegarLightbox(1);
+    });
+  });
+</script>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .foto-item {
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+  }
+  #lightbox-img {
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+</style>

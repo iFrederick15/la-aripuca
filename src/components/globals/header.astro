@@ -1,0 +1,19 @@
+---
+import Menu from "../globals/menu.astro";
+---
+
+<header
+  class="fixed z-50 flex w-full items-center justify-between bg-white/90 px-6 py-4 backdrop-blur-md"
+>
+  <a href="/">
+    <img
+      src="./logo.png"
+      alt="La Aripuca logo"
+      class="flex h-16 w-auto pl-10"
+    />
+  </a>
+  <Menu />
+
+  <a href="/#contacto" class="buttonHeader hidden hover:text-white lg:block"
+    >Contacto</a>
+</header>

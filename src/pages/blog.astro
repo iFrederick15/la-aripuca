@@ -1,0 +1,409 @@
+---
+// Blog.astro - Página índice del blog de La Aripuca
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/globals/header.astro";
+import Footer from "../components/globals/footer.astro";
+// Aquí importarías tus posts desde archivos markdown o desde un CMS
+// Por ahora usamos datos de ejemplo basados en el blog actual
+const posts = [
+  {
+    slug: "un-sueno-una-construccion",
+    title: "Un sueño, una construcción",
+    excerpt:
+      "La Aripuca: Un Sueño Convertido en Realidad. El 11 de marzo de 1998 marcó el inicio de una construcción emblemática...",
+    date: "2025-02-21",
+    image: "/images/blog/construccion-aripuca.jpg",
+    category: "Historia",
+    readTime: "5 min",
+  },
+  {
+    slug: "troncos-de-cuerpo-y-alma",
+    title: "Troncos de cuerpo y alma",
+    excerpt:
+      "Construir La Aripuca fue un desafío titánico. Para darle vida a esta majestuosa estructura, era necesario...",
+    date: "2025-02-21",
+    image: "/images/blog/troncos-aripuca.jpg",
+    category: "Historia",
+    readTime: "4 min",
+  },
+  {
+    slug: "una-historia-una-familia",
+    title: "Una historia, una familia",
+    excerpt:
+      "Cada rincón de La Aripuca guarda la historia de nuestra familia, nuestros sueños y nuestro amor...",
+    date: "2025-02-21",
+    image: "/images/blog/familia-aripuca.jpg",
+    category: "Familia",
+    readTime: "6 min",
+  },
+];
+
+// Función para formatear fecha
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("es-AR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+---
+
+<Layout title="Blog - La Aripuca">
+  <Header />
+  <!-- Hero del Blog -->
+  <section class="hero-blog">
+    <div class="container">
+      <h1 class="pt-20">Nuestro Blog</h1>
+      <p class="subtitle">Historias, vivencias y noticias de La Aripuca</p>
+    </div>
+  </section>
+
+  <!-- Grid de Posts -->
+  <section class="blog-section">
+    <div class="container">
+      <!-- Filtros/Categorías (opcional para futuro) -->
+      <div class="blog-filters">
+        <button class="filter-btn active">Todos</button>
+        <button class="filter-btn">Historia</button>
+        <button class="filter-btn">Familia</button>
+        <button class="filter-btn">Eventos</button>
+        <button class="filter-btn">Naturaleza</button>
+      </div>
+
+      <!-- Grid de Artículos -->
+      <div class="posts-grid">
+        {
+          posts.map((post) => (
+            <article class="post-card">
+              <a href={`/blog/${post.slug}`} class="post-image-link">
+                <img src={post.image} alt={post.title} class="post-image" />
+                <span class="post-category">{post.category}</span>
+              </a>
+
+              <div class="post-content">
+                <div class="post-meta">
+                  <time datetime={post.date}>{formatDate(post.date)}</time>
+                  <span class="separator">•</span>
+                  <span class="read-time">{post.readTime} de lectura</span>
+                </div>
+
+                <h2 class="post-title">
+                  <a href={`/blog/${post.slug}`}>{post.title}</a>
+                </h2>
+
+                <p class="post-excerpt">{post.excerpt}</p>
+
+                <a href={`/blog/${post.slug}`} class="read-more">
+                  Leer más
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <!-- Paginación (para cuando tengas más posts) -->
+      <!-- <nav class="pagination">
+        <button class="pagination-btn" disabled>Anterior</button>
+        <span class="pagination-info">Página 1 de 1</span>
+        <button class="pagination-btn" disabled>Siguiente</button>
+      </nav> -->
+    </div>
+  </section>
+  <Footer />
+</Layout>
+
+<style>
+  /* Hero del Blog */
+  .hero-blog {
+    background: linear-gradient(135deg, var(--color-primario) 0%, #6b2d12 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .hero-blog h1 {
+    font-family: var(--font-titulo);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin: 0 0 1rem 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .subtitle {
+    font-family: "Lucida Serif", serif;
+    font-size: 1.25rem;
+    opacity: 0.95;
+    margin: 0;
+  }
+
+  /* Sección principal */
+  .blog-section {
+    padding: 4rem 0;
+    background-color: var(--color-fondo);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Filtros */
+  .blog-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .filter-btn {
+    font-family: var(--font-titulo);
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--color-primario);
+    background: white;
+    color: var(--color-primario);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: var(--color-primario);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(140, 59, 23, 0.3);
+  }
+
+  /* Grid de Posts */
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Tarjeta de Post */
+  .post-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .post-image-link {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    aspect-ratio: 16 / 10;
+  }
+
+  .post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .post-card:hover .post-image {
+    transform: scale(1.1);
+  }
+
+  .post-category {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--color-secundario);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-family: var(--font-titulo);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Contenido del Post */
+  .post-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "Lucida Sans", sans-serif;
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .separator {
+    color: var(--color-primario);
+  }
+
+  .post-title {
+    font-family: var(--font-titulo);
+    font-size: 1.5rem;
+    margin: 0 0 1rem 0;
+    line-height: 1.3;
+  }
+
+  .post-title a {
+    color: #2c2c2c;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .post-title a:hover {
+    color: var(--color-primario);
+  }
+
+  .post-excerpt {
+    font-family: "Lucida Serif", serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin: 0 0 1.5rem 0;
+    flex: 1;
+  }
+
+  .read-more {
+    font-family: var(--font-titulo);
+    color: var(--color-primario);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .read-more:hover {
+    gap: 1rem;
+    color: var(--color-secundario);
+  }
+
+  .read-more svg {
+    transition: transform 0.3s ease;
+  }
+
+  .read-more:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Paginación */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .pagination-btn {
+    font-family: var(--font-titulo);
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--color-primario);
+    background: white;
+    color: var(--color-primario);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .pagination-btn:not(:disabled):hover {
+    background: var(--color-primario);
+    color: white;
+  }
+
+  .pagination-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .pagination-info {
+    font-family: var(--font-titulo);
+    color: #666;
+  }
+</style>
+
+<script>
+  // Filtros de categoría
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const postCards = document.querySelectorAll(".post-card");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // Remover 'active' de todos los botones
+      filterBtns.forEach((b) => b.classList.remove("active"));
+
+      // Agregar 'active' al botón clickeado
+      btn.classList.add("active");
+
+      // Obtener la categoría seleccionada
+      const selectedCategory = btn.textContent.trim();
+
+      // Mostrar/ocultar posts según la categoría
+      postCards.forEach((card) => {
+        const postCategory = card.querySelector(".post-category");
+
+        if (selectedCategory === "Todos") {
+          // Mostrar todos
+          card.style.display = "flex";
+        } else {
+          // Mostrar solo los que coinciden
+          if (
+            postCategory &&
+            postCategory.textContent.trim() === selectedCategory
+          ) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        }
+      });
+    });
+  });
+</script>
