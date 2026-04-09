@@ -1,4 +1,4 @@
-<section class="bg-fondo px-6 py-24" id="contacto">
+<section class="bg-fondo px-4 py-24 sm:px-6" id="contacto">
   <div
     class="mx-auto grid max-w-7xl overflow-hidden rounded-4xl bg-white shadow md:grid-cols-2"
   >
@@ -75,7 +75,7 @@
 <script>
   const btn = document.getElementById("btn-enviar");
 
-  btn.addEventListener("click", () => {
+  btn?.addEventListener("click", () => {
     const nombre = (
       document.getElementById("nombre") as HTMLInputElement
     ).value.trim();
