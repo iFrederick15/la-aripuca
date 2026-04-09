@@ -1,17 +1,7 @@
 <section class="overflow-hidden bg-fondo px-6 py-24">
   <div class="mx-auto grid max-w-7xl items-center gap-8 md:gap-16 md:grid-cols-2">
-    <div class="group relative">
-      <div
-        class="bg-secundario/70 absolute -inset-4 -rotate-2 rounded-2xl transition-transform duration-500 group-hover:rotate-0"
-      >
-      </div>
-      <img
-        class="relative aspect-4/5 w-full rounded-xl object-cover shadow-2xl"
-        data-alt=""
-        src="/aripuca-de-lejos.png"
-      />
-    </div>
-    <div class="space-y-6">
+    <!-- Texto: orden 1 en mobile, orden 1 en desktop -->
+    <div class="order-1 space-y-6 md:order-2">
       <span
         class="text-primario font-body text-sm font-bold tracking-widest uppercase"
         >Nuestro Compromiso</span
@@ -24,15 +14,39 @@
         es solo una estructura, es un mensaje. Cada pieza cuenta una historia de
         gigantes caídos y la urgente necesidad de proteger lo que aún nos queda.
       </p>
-      <div class="grid grid-cols-2 gap-6 pt-4">
-        <div class="border-primario bg-secundario/8 font-body border-l-4 p-4">
-          <span class="text-secondary block text-2xl font-bold">30+</span>
-          <span class="text-on-surface-variant text-sm">Especies nativas</span>
-        </div>
-        <div class="border-secundario bg-secundario/8 font-body border-l-4 p-4">
-          <span class="text-secondary block text-2xl font-bold">17m</span>
-          <span class="text-on-surface-variant text-sm">De altura</span>
-        </div>
+    </div>
+    <!-- Imagen: orden 2 en mobile, orden 1 en desktop -->
+    <div class="group relative order-2 md:order-1">
+      <div
+        class="bg-secundario/70 absolute -inset-4 -rotate-2 rounded-2xl transition-transform duration-500 group-hover:rotate-0"
+      >
+      </div>
+      <img
+        class="relative aspect-4/5 w-full rounded-xl object-cover shadow-2xl"
+        data-alt=""
+        src="/aripuca-de-lejos.png"
+      />
+    </div>
+    <!-- Énfasis: orden 3 en mobile, se oculta y se muestra dentro del texto en desktop -->
+    <div class="order-3 grid grid-cols-2 gap-6 md:hidden">
+      <div class="border-primario bg-secundario/8 font-body border-l-4 p-4">
+        <span class="text-secondary block text-2xl font-bold">30+</span>
+        <span class="text-on-surface-variant text-sm">Especies nativas</span>
+      </div>
+      <div class="border-secundario bg-secundario/8 font-body border-l-4 p-4">
+        <span class="text-secondary block text-2xl font-bold">17m</span>
+        <span class="text-on-surface-variant text-sm">De altura</span>
+      </div>
+    </div>
+    <!-- Énfasis solo en desktop (dentro del flujo del texto) -->
+    <div class="order-2 hidden grid-cols-2 gap-6 pt-4 md:order-2 md:col-start-2 md:grid">
+      <div class="border-primario bg-secundario/8 font-body border-l-4 p-4">
+        <span class="text-secondary block text-2xl font-bold">30+</span>
+        <span class="text-on-surface-variant text-sm">Especies nativas</span>
+      </div>
+      <div class="border-secundario bg-secundario/8 font-body border-l-4 p-4">
+        <span class="text-secondary block text-2xl font-bold">17m</span>
+        <span class="text-on-surface-variant text-sm">De altura</span>
       </div>
     </div>
   </div>
