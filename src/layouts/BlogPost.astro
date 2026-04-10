@@ -14,7 +14,16 @@ interface Props {
   imageAlt: string;
 }
 
-const { title, pageTitle, category, date, dateLabel, readTime, image, imageAlt } = Astro.props;
+const {
+  title,
+  pageTitle,
+  category,
+  date,
+  dateLabel,
+  readTime,
+  image,
+  imageAlt,
+} = Astro.props;
 ---
 
 <Layout title={pageTitle}>
@@ -36,9 +45,9 @@ const { title, pageTitle, category, date, dateLabel, readTime, image, imageAlt }
     <div class="container-narrow">
       <img src={image} alt={imageAlt} class="post-image" />
 
-      <div class="post-content">
+      <article class="post-content">
         <slot />
-      </div>
+      </article>
 
       <a href="/blog" class="back-link">← Volver al Blog</a>
     </div>
@@ -122,6 +131,7 @@ const { title, pageTitle, category, date, dateLabel, readTime, image, imageAlt }
     }
   }
 
+  /* Estilos para el contenido Markdown */
   .post-content {
     font-family: "Lucida Serif", serif;
     font-size: 1.1rem;
@@ -129,8 +139,73 @@ const { title, pageTitle, category, date, dateLabel, readTime, image, imageAlt }
     color: #3a3a3a;
   }
 
+  /* IMPORTANTE: Párrafos con espaciado */
   .post-content p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem !important;
+    margin-top: 0 !important;
+  }
+
+  .post-content p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Negritas */
+  .post-content strong,
+  .post-content b {
+    font-weight: 700;
+    color: #2c2c2c;
+  }
+
+  /* Cursivas */
+  .post-content em,
+  .post-content i {
+    font-style: italic;
+  }
+
+  /* Headings */
+  .post-content h2 {
+    font-family: var(--font-titulo);
+    font-size: 1.75rem;
+    margin: 2.5rem 0 1.25rem 0;
+    color: var(--color-primario);
+  }
+
+  .post-content h3 {
+    font-family: var(--font-titulo);
+    font-size: 1.4rem;
+    margin: 2rem 0 1rem 0;
+    color: #2c2c2c;
+  }
+
+  /* Listas */
+  .post-content ul,
+  .post-content ol {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+  }
+
+  .post-content li {
+    margin-bottom: 0.75rem;
+  }
+
+  /* Links */
+  .post-content a {
+    color: var(--color-primario);
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+
+  .post-content a:hover {
+    color: var(--color-secundario);
+  }
+
+  /* Blockquotes */
+  .post-content blockquote {
+    border-left: 4px solid var(--color-primario);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #666;
   }
 
   .back-link {
