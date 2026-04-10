@@ -1,130 +1,127 @@
 <div class="flex items-center">
-<!-- Botón hamburguesa (solo visible en mobile) -->
-<button
-  id="menu-toggle"
-  class="block text-[#8a320d] focus:outline-none lg:hidden"
-  aria-label="Abrir menú"
->
-  <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M4 6h16M4 12h16M4 18h16"></path>
-  </svg>
-</button>
-
-<!-- Menú desktop y mobile -->
-<nav class="font-title">
-  <ul
-    id="menu"
-    class="fixed top-18 right-0 hidden w-full flex-col gap-4 bg-white/90 px-6 py-6 shadow-lg backdrop-blur-md lg:static lg:flex lg:w-auto lg:flex-row lg:gap-10 lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none"
+  <!-- Botón hamburguesa (solo visible en mobile) -->
+  <button
+    id="menu-toggle"
+    class="block text-[#8a320d] focus:outline-none lg:hidden"
+    aria-label="Abrir menú"
   >
-    <li>
-      <a
-        href="/"
-        class="block py-2 pb-1 hover:border-b-2 hover:text-[#8a320d] lg:py-0"
-        >Inicio</a
-      >
-    </li>
+    <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
 
-    <!-- Menú con dropdown -->
-    <li class="group relative">
-      <button
-        class="flex w-full items-center justify-between gap-1 pb-1 text-left hover:border-b-2 hover:text-[#8a320d] lg:w-auto lg:justify-center lg:text-center"
-        data-dropdown-toggle
-      >
-        Espacios
-        <svg
-          class="dropdown-arrow h-3 w-3 transition-transform group-hover:rotate-180"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+  <!-- Menú desktop y mobile -->
+  <nav class="font-title">
+    <ul
+      id="menu"
+      class="fixed top-18 right-0 hidden w-full flex-col gap-4 bg-white/90 px-6 py-6 shadow-lg backdrop-blur-md lg:static lg:flex lg:w-auto lg:flex-row lg:gap-10 lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none"
+    >
+      <li>
+        <a
+          href="/"
+          class="block py-2 pb-1 hover:border-b-2 hover:text-[#8a320d] lg:py-0"
+          >Inicio</a
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M19 9l-7 7-7-7"></path>
-        </svg>
-      </button>
+      </li>
 
-      <!-- Submenu -->
-      <ul
-        class="dropdown-menu hidden pl-4 lg:absolute lg:top-full lg:left-0 lg:z-50 lg:pt-2 lg:pl-0 lg:group-hover:block"
-      >
-        <div
-          class="lg:ring-opacity-5 lg:w-48 lg:rounded-lg lg:bg-white/90 lg:shadow-lg lg:ring-1 lg:ring-black lg:backdrop-blur-md"
+      <!-- Menú con dropdown -->
+      <li class="group relative">
+        <button
+          class="flex w-full items-center justify-between gap-1 pb-1 text-left hover:border-b-2 hover:text-[#8a320d] lg:w-auto lg:justify-center lg:text-center"
+          data-dropdown-toggle
         >
-          <li>
-            <a
-              href="/#lastacuaras"
-              class="hover:bg-fondo block px-4 py-3 transition hover:text-[#8a320d]"
-            >
-              Las Tacuaras
-            </a>
-          </li>
-          <li>
-            <a
-              href="/#losguaranies"
-              class="hover:bg-fondo block px-4 py-3 transition hover:text-[#8a320d]"
-            >
-              Los Guaraníes
-            </a>
-          </li>
-          <li>
-            <a
-              href="/#eltacuru"
-              class="hover:bg-fondo block px-4 py-3 transition hover:text-[#8a320d]"
-            >
-              El Tacurú
-            </a>
-          </li>
-          <li>
-            <a
-              href="/#elyatei"
-              class="hover:bg-fondo block px-4 py-3 transition hover:text-[#8a320d]"
-            >
-              El Yateí
-            </a>
+          Espacios
+          <svg
+            class="dropdown-arrow h-3 w-3 transition-transform group-hover:rotate-180"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+
+        <!-- Submenu -->
+        <ul
+          class="dropdown-menu lg:ring-opacity-5 hidden lg:absolute lg:top-full lg:left-0 lg:mt-2 lg:w-48 lg:rounded-lg lg:bg-white/90 lg:shadow-lg lg:ring-1 lg:ring-black lg:backdrop-blur-md"
+        >
+          <div>
+            <li>
+              <a
+                href="/#lastacuaras"
+                class="block px-4 py-3 transition hover:text-[#8a320d]"
+              >
+                Las Tacuaras
+              </a>
+            </li>
+            <li>
+              <a
+                href="/#losguaranies"
+                class="block px-4 py-3 transition hover:text-[#8a320d]"
+              >
+                Los Guaraníes
+              </a>
+            </li>
+            <li>
+              <a
+                href="/#eltacuru"
+                class="block px-4 py-3 transition hover:text-[#8a320d]"
+              >
+                El Tacurú
+              </a>
+            </li>
+            <li>
+              <a
+                href="/#elyatei"
+                class="block px-4 py-3 transition hover:text-[#8a320d]"
+              >
+                El Yateí
+              </a>
+            </li>
             <li>
               <a
                 href="/#elcucurucho"
-                class="hover:bg-fondo block px-4 py-3 transition hover:text-[#8a320d]"
+                class="block px-4 py-3 transition hover:text-[#8a320d]"
               >
                 El Cucurucho
               </a>
             </li>
-
             <li>
               <a
                 href="/#lastermitas"
-                class="hover:bg-fondo block px-4 py-3 transition hover:text-[#8a320d]"
+                class="block px-4 py-3 transition hover:text-[#8a320d]"
               >
                 Las Termitas
               </a>
             </li>
-          </li>
-        </div>
-      </ul>
-    </li>
+          </div>
+        </ul>
+      </li>
 
-    <li>
-      <a
-        href="/galeria"
-        class="block py-2 pb-1 hover:border-b-2 hover:text-[#8a320d] lg:py-0"
-        >Galería</a
-      >
-    </li>
-    <li>
-      <a
-        href="/blog"
-        class="block py-2 pb-1 hover:border-b-2 hover:text-[#8a320d] lg:py-0"
-        >Blog</a
-      >
-    </li>
-  </ul>
-</nav>
+      <li>
+        <a
+          href="/galeria"
+          class="block py-2 pb-1 hover:border-b-2 hover:text-[#8a320d] lg:py-0"
+          >Galería</a
+        >
+      </li>
+      <li>
+        <a
+          href="/blog"
+          class="block py-2 pb-1 hover:border-b-2 hover:text-[#8a320d] lg:py-0"
+          >Blog</a
+        >
+      </li>
+    </ul>
+  </nav>
 </div>
 
 <style>
@@ -138,6 +135,14 @@
   @media (min-width: 1024px) {
     .group:hover ul {
       display: block;
+    }
+
+    .dropdown-menu {
+      background-color: rgb(255 255 255 / 0.9);
+      backdrop-filter: blur(12px);
+      box-shadow:
+        0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
     }
   }
 
