@@ -2,21 +2,6 @@
   <div
     class="mx-auto grid max-w-7xl items-center gap-8 md:grid-cols-2 md:gap-16"
   >
-    <!-- Texto: orden 1 en mobile, orden 1 en desktop -->
-    <div class="order-1 space-y-6 md:order-2">
-      <span
-        class="text-primario font-body text-sm font-bold tracking-widest uppercase"
-        >Nuestro Compromiso</span
-      >
-      <h2 class="font-title text-4xl font-black md:text-5xl">
-        Sanar la tierra a través de la conciencia
-      </h2>
-      <p class="font-body text-lg leading-relaxed">
-        Construida con troncos recuperados de la selva misionera, La Aripuca no
-        es solo una estructura, es un mensaje. Cada pieza cuenta una historia de
-        gigantes caídos y la urgente necesidad de proteger lo que aún nos queda.
-      </p>
-    </div>
     <!-- Imagen: orden 2 en mobile, orden 1 en desktop -->
     <div class="group relative order-2 md:order-1">
       <div
@@ -29,21 +14,34 @@
         src="/aripuca-compromiso.jpeg"
       />
     </div>
-    <!-- Énfasis: orden 3 en mobile, se oculta y se muestra dentro del texto en desktop -->
-    <div class="order-3 grid grid-cols-2 gap-6 md:hidden">
-      <div class="border-primario bg-secundario/8 font-body border-l-4 p-4">
-        <span class="text-secondary block text-2xl font-bold">30+</span>
-        <span class="text-on-surface-variant text-sm">Especies nativas</span>
-      </div>
-      <div class="border-secundario bg-secundario/8 font-body border-l-4 p-4">
-        <span class="text-secondary block text-2xl font-bold">17m</span>
-        <span class="text-on-surface-variant text-sm">De altura</span>
+    <!-- Texto + énfasis: un solo bloque centrado frente a la imagen -->
+    <div class="order-1 flex flex-col gap-6 md:order-2">
+      <span
+        class="text-primario font-body text-sm font-bold tracking-widest uppercase"
+        >Nuestro Compromiso</span
+      >
+      <h2 class="font-title text-4xl font-black md:text-5xl">
+        Sanar la tierra a través de la conciencia
+      </h2>
+      <p class="font-body text-lg leading-relaxed">
+        Construida con troncos recuperados de la selva misionera, La Aripuca no
+        es solo una estructura, es un mensaje. Cada pieza cuenta una historia de
+        gigantes caídos y la urgente necesidad de proteger lo que aún nos queda.
+      </p>
+      <!-- Énfasis: solo visible en desktop -->
+      <div class="hidden grid-cols-2 gap-6 pt-2 md:grid">
+        <div class="border-primario bg-secundario/8 font-body border-l-4 p-4">
+          <span class="text-secondary block text-2xl font-bold">30+</span>
+          <span class="text-on-surface-variant text-sm">Especies nativas</span>
+        </div>
+        <div class="border-secundario bg-secundario/8 font-body border-l-4 p-4">
+          <span class="text-secondary block text-2xl font-bold">17m</span>
+          <span class="text-on-surface-variant text-sm">De altura</span>
+        </div>
       </div>
     </div>
-    <!-- Énfasis solo en desktop (dentro del flujo del texto) -->
-    <div
-      class="order-2 hidden grid-cols-2 gap-6 pt-4 md:order-2 md:col-start-2 md:grid"
-    >
+    <!-- Énfasis: solo visible en mobile (después de la imagen) -->
+    <div class="order-3 grid grid-cols-2 gap-6 md:hidden">
       <div class="border-primario bg-secundario/8 font-body border-l-4 p-4">
         <span class="text-secondary block text-2xl font-bold">30+</span>
         <span class="text-on-surface-variant text-sm">Especies nativas</span>
