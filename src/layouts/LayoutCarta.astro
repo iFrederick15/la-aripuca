@@ -20,10 +20,6 @@ const {
 const siteUrl = "https://www.aripuca.com.ar";
 const canonicalURL = new URL(canonicalPath, siteUrl).toString();
 const ogImage = new URL(image, siteUrl).toString();
-
-import Header from "../components/globals/header.astro";
-import Footer from "../components/globals/footer.astro";
-
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "TouristAttraction",
@@ -81,7 +77,7 @@ const localBusinessSchema = {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://lh3.googleusercontent.com" />
 
-    <!-- Preload imagen hero -->
+    <!-- Preload imagen hero si se especifica -->
     {
       preloadHeroImage && (
         <link
@@ -98,7 +94,7 @@ const localBusinessSchema = {
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
     />
 
-    <!-- SEO -->
+    <!-- SEO básico -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
@@ -129,9 +125,7 @@ const localBusinessSchema = {
     />
   </head>
   <body>
-    <Header />
     <slot />
-    <Footer />
   </body>
 </html>
 
