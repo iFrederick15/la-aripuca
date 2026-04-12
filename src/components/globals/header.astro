@@ -1,20 +1,104 @@
 ---
-import Menu from "../globals/menu.astro";
+
 ---
 
 <header
-  class="bg-fondo fixed z-50 flex w-full items-center justify-between px-6 py-4 backdrop-blur-md"
+  class="bg-fondo fixed z-50 flex w-full items-center justify-between px-6 py-4 backdrop-blur-md md:px-16"
 >
   <a href="/">
-    <img
-      src="/logo.png"
-      alt="La Aripuca logo"
-      class="flex h-10 w-auto pl-4 md:h-16 md:pl-10"
-    />
+    <img src="/logo.png" alt="La Aripuca logo" class="h-10 w-auto md:h-16" />
   </a>
-  <Menu />
 
-  <a href="/#contacto" class="buttonHeader hidden hover:text-white lg:block"
-    >Contacto</a
+  <button
+    id="menu-toggle"
+    class="z-50 flex flex-col gap-1.5 lg:hidden"
+    aria-label="Abrir menú"
   >
+    <span class="h-0.5 w-6 bg-white"></span>
+    <span class="h-0.5 w-6 bg-white"></span>
+    <span class="h-0.5 w-6 bg-white"></span>
+  </button>
+
+  <nav
+    id="nav-menu"
+    class="bg-fondo fixed inset-0 flex -translate-x-full flex-col items-center justify-center backdrop-blur-lg transition-transform duration-300 lg:static lg:translate-x-0 lg:flex-row lg:bg-transparent lg:backdrop-blur-none"
+  >
+    <ul class="flex flex-col items-center gap-8 lg:flex-row lg:gap-6">
+      <li>
+        <a href="/" class="hover:border-primario hover:border-b-2">Inicio</a>
+      </li>
+      <li class="group bg-fondo relative">
+        <a href="/espacios" class="cursor-pointer">Espacios ▾</a>
+        <ul class="submenu">
+          <li>
+            <a href="/#lastacuaras" class="hover:text-shadow">Las Tacuaras</a>
+          </li>
+          <li>
+            <a href="/#losguaranies" class="hover:text-shadow">Los Guaraníes</a>
+          </li>
+          <li>
+            <a href="/#eltacuru" class="hover:text-shadow">El Tacurú</a>
+          </li>
+          <li>
+            <a href="/#elyatei" class="hover:text-shadow">El Yateí</a>
+          </li>
+          <li>
+            <a href="/#elcucurucho" class="hover:text-shadow">El Cucurucho</a>
+          </li>
+          <li>
+            <a href="/#lastermitas" class="hover:text-shadow">Las Termitas</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="/galeria" class="hover:border-primario hover:border-b-2"
+          >Galería</a
+        >
+      </li>
+      <li>
+        <a href="/blog" class="hover:border-primario hover:border-b-2">Blog</a>
+      </li>
+      <li class="lg:hidden">
+        <a href="/#contacto" class="buttonHeader">Contacto</a>
+      </li>
+    </ul>
+  </nav>
+
+  <a href="/#contacto" class="buttonHeader hidden lg:block">Contacto</a>
 </header>
+
+<style>
+  @reference "tailwindcss";
+
+  nav ul a {
+    color: var(--color-primario);
+    @apply text-lg transition-colors;
+  }
+  nav ul a:hover {
+    color: var(--color-primario);
+  }
+
+  .submenu {
+    @apply invisible absolute top-full mt-2 flex-col rounded-lg py-2 opacity-0 shadow-lg transition-all duration-200;
+    left: 0;
+    min-width: 200px;
+    background-color: var(--color-fondo);
+  }
+
+  .group:hover .submenu {
+    @apply visible flex opacity-100;
+  }
+  .submenu a {
+    @apply block px-4 py-2 text-base whitespace-nowrap;
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("nav-menu");
+
+  toggle?.addEventListener("click", () => {
+    nav?.classList.toggle("translate-x-0");
+    nav?.classList.toggle("-translate-x-full");
+  });
+</script>

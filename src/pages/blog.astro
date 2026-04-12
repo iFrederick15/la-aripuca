@@ -2,9 +2,6 @@
 // Blog.astro - Página índice del blog de La Aripuca
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/globals/header.astro";
-import Footer from "../components/globals/footer.astro";
-
 // Obtener todos los posts y ordenarlos por fecha (más reciente primero)
 const posts = await getCollection("blog");
 const sortedPosts = posts.sort(
@@ -22,7 +19,6 @@ function formatDate(date: Date) {
 ---
 
 <Layout title="Blog - La Aripuca">
-  <Header />
   <!-- Hero del Blog -->
   <section class="hero-blog">
     <div class="container">
@@ -93,7 +89,6 @@ function formatDate(date: Date) {
       </div>
     </div>
   </section>
-  <Footer />
 </Layout>
 
 <style>
