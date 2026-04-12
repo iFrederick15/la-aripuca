@@ -4,7 +4,7 @@ excerpt: "El 11 de marzo de 1998 marcó el inicio de una construcción emblemát
 date: 2025-02-21
 image: "https://www.aripuca.com.ar/wp-content/uploads/2025/02/n.jpg"
 imageAlt: "Un sueño, una construcción"
-category: "Historia"
+category: "La Aripuca"
 readTime: "5 min"
 ---
 

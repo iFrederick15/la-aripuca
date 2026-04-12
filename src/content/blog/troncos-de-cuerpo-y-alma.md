@@ -4,7 +4,7 @@ excerpt: "Construir La Aripuca fue un desafío titánico. Para darle vida a esta
 date: 2025-02-21
 image: "https://www.aripuca.com.ar/wp-content/uploads/2025/02/Mas-que-un-paseo-.jpg"
 imageAlt: "Troncos de cuerpo y alma"
-category: "Historia"
+category: "La Aripuca"
 readTime: "4 min"
 ---
 

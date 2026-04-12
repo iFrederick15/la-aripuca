@@ -4,7 +4,7 @@ excerpt: "Cada rincón de La Aripuca guarda la historia de nuestra familia, nues
 date: 2025-02-21
 image: "https://www.aripuca.com.ar/wp-content/uploads/2025/03/ari-1.jpg"
 imageAlt: "Una historia, una familia"
-category: "Familia"
+category: "La Aripuca"
 readTime: "6 min"
 ---
 
