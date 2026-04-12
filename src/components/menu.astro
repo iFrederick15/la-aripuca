@@ -2,16 +2,12 @@
   <!-- Botón hamburguesa (solo visible en mobile) -->
   <button
     id="menu-toggle"
-    class="block text-[#8a320d] focus:outline-none lg:hidden"
+    class="z-50 flex flex-col gap-1.5 lg:hidden"
     aria-label="Abrir menú"
   >
-    <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M4 6h16M4 12h16M4 18h16"></path>
-    </svg>
+    <span class="bg-primario h-0.5 w-6"></span>
+    <span class="bg-primario h-0.5 w-6"></span>
+    <span class="bg-primario h-0.5 w-6"></span>
   </button>
 
   <!-- Menú desktop y mobile -->
@@ -46,59 +42,55 @@
         </button>
 
         <!-- Submenu -->
-        <ul
-          class="dropdown-menu lg:ring-opacity-5 lg:bg-fondo hidden lg:absolute lg:top-full lg:left-0 lg:mt-2 lg:w-48 lg:rounded-lg lg:shadow-lg lg:ring-1 lg:ring-black lg:backdrop-blur-md"
-        >
-          <div>
-            <li>
-              <a
-                href="/#lastacuaras"
-                class="block px-4 py-3 transition hover:text-[#8a320d]"
-              >
-                Las Tacuaras
-              </a>
-            </li>
-            <li>
-              <a
-                href="/#losguaranies"
-                class="block px-4 py-3 transition hover:text-[#8a320d]"
-              >
-                Los Guaraníes
-              </a>
-            </li>
-            <li>
-              <a
-                href="/#eltacuru"
-                class="block px-4 py-3 transition hover:text-[#8a320d]"
-              >
-                El Tacurú
-              </a>
-            </li>
-            <li>
-              <a
-                href="/#elyatei"
-                class="block px-4 py-3 transition hover:text-[#8a320d]"
-              >
-                El Yateí
-              </a>
-            </li>
-            <li>
-              <a
-                href="/#elcucurucho"
-                class="block px-4 py-3 transition hover:text-[#8a320d]"
-              >
-                El Cucurucho
-              </a>
-            </li>
-            <li>
-              <a
-                href="/#lastermitas"
-                class="block px-4 py-3 transition hover:text-[#8a320d]"
-              >
-                Las Termitas
-              </a>
-            </li>
-          </div>
+        <ul class="dropdown-menu hidden">
+          <li>
+            <a
+              href="/#lastacuaras"
+              class="block px-4 py-3 transition hover:text-[#8a320d]"
+            >
+              Las Tacuaras
+            </a>
+          </li>
+          <li>
+            <a
+              href="/#losguaranies"
+              class="block px-4 py-3 transition hover:text-[#8a320d]"
+            >
+              Los Guaraníes
+            </a>
+          </li>
+          <li>
+            <a
+              href="/#eltacuru"
+              class="block px-4 py-3 transition hover:text-[#8a320d]"
+            >
+              El Tacurú
+            </a>
+          </li>
+          <li>
+            <a
+              href="/#elyatei"
+              class="block px-4 py-3 transition hover:text-[#8a320d]"
+            >
+              El Yateí
+            </a>
+          </li>
+          <li>
+            <a
+              href="/#elcucurucho"
+              class="block px-4 py-3 transition hover:text-[#8a320d]"
+            >
+              El Cucurucho
+            </a>
+          </li>
+          <li>
+            <a
+              href="/#lastermitas"
+              class="block px-4 py-3 transition hover:text-[#8a320d]"
+            >
+              Las Termitas
+            </a>
+          </li>
         </ul>
       </li>
 
@@ -129,16 +121,18 @@
 
   /* Desktop: hover para mostrar dropdown */
   @media (min-width: 1024px) {
-    .group:hover ul {
+    .group:hover .dropdown-menu {
       display: block;
     }
 
     .dropdown-menu {
-      background-color: rgb(255 255 255 / 0.9);
-      backdrop-filter: blur(12px);
-      box-shadow:
-        0 10px 15px -3px rgb(0 0 0 / 0.1),
-        0 4px 6px -4px rgb(0 0 0 / 0.1);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      padding: 0.5rem 0;
+      background-color: var(--color-fondo);
+      border-radius: 0.2rem;
     }
   }
 
