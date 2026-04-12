@@ -48,7 +48,7 @@ const articleSchema = {
     url: siteUrl,
     logo: {
       "@type": "ImageObject",
-      url: `${siteUrl}/logo.png`,
+      url: `${siteUrl}/images/logo.png`,
     },
   },
   mainEntityOfPage: {
@@ -96,7 +96,7 @@ const articleSchema = {
 
 <style>
   .post-hero {
-    background: linear-gradient(135deg, var(--color-primario) 0%, #6b2d12 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, #6b2d12 100%);
     color: white;
     padding: 8rem 0 3rem;
     text-align: center;
@@ -146,7 +146,7 @@ const articleSchema = {
   }
 
   .separator {
-    color: var(--color-secundario);
+    color: var(--color-secondary);
   }
 
   .blog-section {
@@ -205,7 +205,7 @@ const articleSchema = {
     font-family: var(--font-titulo);
     font-size: 1.75rem;
     margin: 2.5rem 0 1.25rem 0;
-    color: var(--color-primario);
+    color: var(--color-primary);
   }
 
   .post-content :global(h3) {
@@ -228,18 +228,18 @@ const articleSchema = {
 
   /* Links */
   .post-content :global(a) {
-    color: var(--color-primario);
+    color: var(--color-primary);
     text-decoration: underline;
     transition: color 0.2s;
   }
 
   .post-content :global(a:hover) {
-    color: var(--color-secundario);
+    color: var(--color-secondary);
   }
 
   /* Blockquotes */
   .post-content :global(blockquote) {
-    border-left: 4px solid var(--color-primario);
+    border-left: 4px solid var(--color-primary);
     padding-left: 1.5rem;
     margin: 2rem 0;
     font-style: italic;
@@ -252,7 +252,7 @@ const articleSchema = {
     font-family: var(--font-titulo);
     font-weight: 700;
     font-size: 0.95rem;
-    color: var(--color-primario);
+    color: var(--color-primary);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -261,6 +261,6 @@ const articleSchema = {
   }
 
   .back-link:hover {
-    border-color: var(--color-primario);
+    border-color: var(--color-primary);
   }
 </style>
