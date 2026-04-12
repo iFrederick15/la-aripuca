@@ -1,5 +1,5 @@
 ---
-
+import Menu from "../menu.astro";
 ---
 
 <header
@@ -9,96 +9,29 @@
     <img src="/logo.png" alt="La Aripuca logo" class="h-10 w-auto md:h-16" />
   </a>
 
-  <button
-    id="menu-toggle"
-    class="z-50 flex flex-col gap-1.5 lg:hidden"
-    aria-label="Abrir menú"
-  >
-    <span class="bg-primario h-0.5 w-6"></span>
-    <span class="bg-primario h-0.5 w-6"></span>
-    <span class="bg-primario h-0.5 w-6"></span>
-  </button>
-
-  <nav
-    id="nav-menu"
-    class="bg-fondo fixed inset-0 flex -translate-x-full flex-col items-center justify-center backdrop-blur-lg transition-transform duration-300 lg:static lg:translate-x-0 lg:flex-row lg:bg-transparent lg:backdrop-blur-none"
-  >
-    <ul class="flex flex-col items-center gap-8 lg:flex-row lg:gap-6">
-      <li>
-        <a href="/" class="hover:border-primario hover:border-b-2">Inicio</a>
-      </li>
-      <li class="group bg-fondo relative">
-        <a href="/espacios" class="cursor-pointer">Espacios ▾</a>
+  <Menu />
+  <!--
+  <nav id="nav-menu">
+    <ul>
+      <li><a href="/">Inicio</a></li>
+      <li class="submenu-parent relative">
+        <a href="/espacios" id="espacios-link">Espacios ▾</a>
         <ul class="submenu">
-          <li>
-            <a href="/#lastacuaras" class="hover:text-shadow">Las Tacuaras</a>
-          </li>
-          <li>
-            <a href="/#losguaranies" class="hover:text-shadow">Los Guaraníes</a>
-          </li>
-          <li>
-            <a href="/#eltacuru" class="hover:text-shadow">El Tacurú</a>
-          </li>
-          <li>
-            <a href="/#elyatei" class="hover:text-shadow">El Yateí</a>
-          </li>
-          <li>
-            <a href="/#elcucurucho" class="hover:text-shadow">El Cucurucho</a>
-          </li>
-          <li>
-            <a href="/#lastermitas" class="hover:text-shadow">Las Termitas</a>
-          </li>
+          <li><a href="/#lastacuaras">Las Tacuaras</a></li>
+          <li><a href="/#losguaranies">Los Guaraníes</a></li>
+          <li><a href="/#eltacuru">El Tacurú</a></li>
+          <li><a href="/#elyatei">El Yateí</a></li>
+          <li><a href="/#elcucurucho">El Cucurucho</a></li>
+          <li><a href="/#lastermitas">Las Termitas</a></li>
         </ul>
       </li>
-      <li>
-        <a href="/galeria" class="hover:border-primario hover:border-b-2"
-          >Galería</a
-        >
-      </li>
-      <li>
-        <a href="/blog" class="hover:border-primario hover:border-b-2">Blog</a>
-      </li>
-      <li class="lg:hidden">
+      <li><a href="/galeria">Galería</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li class="contacto-mobile">
         <a href="/#contacto" class="buttonHeader">Contacto</a>
       </li>
     </ul>
-  </nav>
+  </nav> -->
 
   <a href="/#contacto" class="buttonHeader hidden lg:block">Contacto</a>
 </header>
-
-<style>
-  @reference "tailwindcss";
-
-  nav ul a {
-    color: var(--color-primario);
-    @apply text-lg transition-colors;
-  }
-  nav ul a:hover {
-    color: var(--color-primario);
-  }
-
-  .submenu {
-    @apply invisible absolute top-full mt-2 flex-col rounded-lg py-2 opacity-0 shadow-lg transition-all duration-200;
-    left: 0;
-    min-width: 200px;
-    background-color: var(--color-fondo);
-  }
-
-  .group:hover .submenu {
-    @apply visible flex opacity-100;
-  }
-  .submenu a {
-    @apply block px-4 py-2 text-base whitespace-nowrap;
-  }
-</style>
-
-<script>
-  const toggle = document.getElementById("menu-toggle");
-  const nav = document.getElementById("nav-menu");
-
-  toggle?.addEventListener("click", () => {
-    nav?.classList.toggle("translate-x-0");
-    nav?.classList.toggle("-translate-x-full");
-  });
-</script>
