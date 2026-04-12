@@ -12,6 +12,7 @@ interface Props {
   readTime: string;
   image: string;
   imageAlt: string;
+  excerpt?: string;
 }
 
 const {
@@ -23,10 +24,47 @@ const {
   readTime,
   image,
   imageAlt,
+  excerpt,
 } = Astro.props;
+
+const siteUrl = "https://www.aripuca.com.ar";
+const canonicalPath = Astro.url.pathname;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description: excerpt,
+  image: image,
+  datePublished: date,
+  author: {
+    "@type": "Organization",
+    name: "La Aripuca",
+    url: siteUrl,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "La Aripuca",
+    url: siteUrl,
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteUrl}/logo.png`,
+    },
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": new URL(canonicalPath, siteUrl).toString(),
+  },
+};
 ---
 
-<Layout title={pageTitle}>
+<Layout
+  title={pageTitle}
+  description={excerpt}
+  image={image}
+  canonicalPath={canonicalPath}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <Header />
 
   <section class="post-hero">

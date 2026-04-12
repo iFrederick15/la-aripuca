@@ -1,13 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/globals/header.astro";
 import Hero from "../components/landing/hero.astro";
 import Compromiso from "../components/landing/compromiso.astro";
 import ImagenesLanding from "../components/landing/imagenesLanding.astro";
 import Informacion from "../components/landing/informacion.astro";
 import Testimonios from "../components/landing/testimonios.astro";
 import Contacto from "../components/landing/contacto.astro";
-import Footer from "../components/globals/footer.astro";
 import Tacuaras from "../components/espacios/tacuaras.astro";
 import Guaranies from "../components/espacios/guaranies.astro";
 import Tacuru from "../components/espacios/tacuru.astro";
@@ -16,7 +14,11 @@ import Cucurucho from "../components/espacios/cucurucho.astro";
 import Termitas from "../components/espacios/termitas.astro";
 ---
 
-<Layout title="La Aripuca">
+<Layout
+  title="La Aripuca | Monumento a la Selva Misionera · Puerto Iguazú"
+  description="Visitá La Aripuca en Puerto Iguazú: una gigantesca trampa construida con 30 especies de árboles nativos. Experiencias culturales, gastronomía y ecoturismo en la selva misionera."
+  preloadHeroImage="/la-aripuca.webp"
+>
   <main>
     <!-- Hero -->
     <Hero />

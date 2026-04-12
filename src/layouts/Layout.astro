@@ -1,21 +1,119 @@
 ---
 import "../styles/global.css";
-const { title } = Astro.props;
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalPath?: string;
+  preloadHeroImage?: string;
+}
+
+const {
+  title,
+  description = "La Aripuca es un monumento a la selva misionera en Puerto Iguazú, Argentina. Una gigantesca trampa construida con 30 especies nativas para crear conciencia ambiental.",
+  image = "/og-image.jpg",
+  canonicalPath = Astro.url.pathname,
+  preloadHeroImage,
+} = Astro.props;
+
+const siteUrl = "https://www.aripuca.com.ar";
+const canonicalURL = new URL(canonicalPath, siteUrl).toString();
+const ogImage = new URL(image, siteUrl).toString();
+
 import Header from "../components/globals/header.astro";
 import Footer from "../components/globals/footer.astro";
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  name: "La Aripuca",
+  description:
+    "Monumento ecológico en Puerto Iguazú construido con 30 especies de árboles nativos de la selva misionera. Un espacio dedicado a la educación ambiental y preservación del patrimonio natural.",
+  url: siteUrl,
+  telephone: "+54-3757-423488",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Ruta Nacional 12, Km 4,5",
+    addressLocality: "Puerto Iguazú",
+    addressRegion: "Misiones",
+    postalCode: "3370",
+    addressCountry: "AR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -25.6425,
+    longitude: -54.4189,
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ],
+    opens: "08:30",
+    closes: "18:00",
+  },
+  sameAs: [
+    "https://instagram.com/aripucaiguazu",
+    "https://facebook.com/laaripucaiguazu",
+    "https://tiktok.com/@laaripuca_iguazu",
+  ],
+  image: ogImage,
+  priceRange: "$$",
+};
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/logo.png" />
+
+    <!-- Preconnect para recursos externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://lh3.googleusercontent.com" />
+
+    <!-- Preload imagen hero si se especifica -->
+    {preloadHeroImage && <link rel="preload" as="image" href={preloadHeroImage} fetchpriority="high" />}
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
     />
+
+    <!-- SEO básico -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="La Aripuca" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_AR" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD LocalBusiness -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   </head>
   <body>
     <Header />
