@@ -1,13 +1,31 @@
 <!-- Hero Section -->
-<section
-  class="relative flex h-screen w-full flex-col items-center justify-end bg-cover bg-center bg-no-repeat pb-20 text-center"
-  style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)), url('/images/sectores.png');"
->
-  <div class="relative z-10 px-6 pb-12">
-    <h1
-      class="mb-6 text-5xl font-black tracking-tight text-white drop-shadow-lg md:text-7xl"
-    >
-      Nuestros Espacios
-    </h1>
+<section class="relative w-full text-center">
+  <!-- Mobile: imagen completa en flujo -->
+  <div class="relative md:hidden">
+    <img
+      src="/images/sectores.png"
+      alt="Nuestros Espacios"
+      class="block h-auto w-full"
+    />
+    <div
+      class="absolute inset-0 bg-linear-to-b from-black/20 to-black/70"
+    ></div>
+    <div class="absolute bottom-0 left-0 right-0 z-10 px-6 pb-8">
+      <h1 class="text-4xl font-black tracking-tight text-white drop-shadow-lg">
+        Nuestros Espacios
+      </h1>
+    </div>
+  </div>
+
+  <!-- Desktop: pantalla completa con bg-cover -->
+  <div
+    class="hidden md:flex md:h-screen md:w-full md:flex-col md:items-center md:justify-end md:bg-cover md:bg-center md:bg-no-repeat md:pb-20"
+    style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)), url('/images/sectores.png');"
+  >
+    <div class="relative z-10 px-6 pb-12">
+      <h1 class="mb-6 text-7xl font-black tracking-tight text-white drop-shadow-lg">
+        Nuestros Espacios
+      </h1>
+    </div>
   </div>
 </section>
