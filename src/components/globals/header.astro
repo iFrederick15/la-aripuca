@@ -3,7 +3,8 @@ import Menu from "../menu.astro";
 ---
 
 <header
-  class="bg-fondo fixed z-50 flex w-full items-center justify-between px-6 py-4 backdrop-blur-md md:px-16"
+  id="main-header"
+  class="bg-fondo fixed z-50 flex w-full items-center justify-between border-b border-transparent px-6 py-4 transition-all duration-300 md:px-16"
 >
   <a href="/">
     <img src="/images/logo.png" alt="La Aripuca logo" class="h-10 w-auto md:h-16" />
@@ -35,3 +36,18 @@ import Menu from "../menu.astro";
 
   <a href="/#contacto" class="buttonHeader hidden lg:block">Contacto</a>
 </header>
+
+<script>
+  const header = document.getElementById("main-header");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) {
+      header?.classList.add("shadow-md", "py-2");
+      header?.classList.remove("py-4");
+      header?.style.setProperty("border-color", "rgba(140,59,23,0.12)");
+    } else {
+      header?.classList.remove("shadow-md", "py-2");
+      header?.classList.add("py-4");
+      header?.style.setProperty("border-color", "transparent");
+    }
+  }, { passive: true });
+</script>
