@@ -32,8 +32,8 @@
 .hero-gradient {
   background: linear-gradient(
     to bottom,
-    rgba(26, 28, 28, 0.2),
-    rgba(26, 28, 28, 0.5)
+    rgba(26, 28, 28, 0.1),
+    rgba(26, 28, 28, 0.45)
   );
 }
 
