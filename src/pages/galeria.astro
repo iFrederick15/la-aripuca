@@ -196,55 +196,25 @@ const overlayColor: Record<string, string> = {
   <main>
     <!-- Hero -->
     <section class="relative w-full text-center">
-      <!-- Mobile -->
-      <div class="relative md:hidden">
-        <img
-          src="/images/aripuca-compromiso.jpeg"
-          alt="Galería de La Aripuca"
-          class="block h-[65vw] min-h-65 w-full object-cover"
-        />
-        <div class="absolute inset-0 bg-linear-to-b from-black/20 to-black/75">
-        </div>
-        <div
-          class="absolute inset-0 flex flex-col items-center justify-end px-6 pb-8"
-        >
-          <span
-            class="font-title mb-2 text-xs font-bold tracking-widest text-[#BFB065] uppercase drop-shadow-md"
-          >
-            Puerto Iguazú · Misiones
-          </span>
-          <h1
-            class="font-title text-4xl font-black tracking-tight text-white drop-shadow-lg"
-          >
-            Nuestra Galería
-          </h1>
-          <p class="font-body mt-2 text-sm leading-snug text-white/80 italic">
-            Selva, cultura y arquitectura en imágenes
-          </p>
-        </div>
-      </div>
-
-      <!-- Desktop -->
       <div
-        class="hidden md:flex md:h-[85vh] md:w-full md:flex-col md:items-center md:justify-end md:bg-cover md:bg-center md:bg-no-repeat md:pb-24"
+        class="relative flex h-[65vw] min-h-65 w-full flex-col items-center justify-end bg-cover bg-center bg-no-repeat pb-8 md:h-[85vh] md:pb-24"
         style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.75)), url('/images/aripuca-compromiso.jpeg');"
       >
         <div class="relative z-10 max-w-3xl px-6">
           <span
-            class="font-title mb-4 inline-block text-xs font-bold tracking-widest text-[#BFB065] uppercase drop-shadow-md"
+            class="font-title mb-2 inline-block text-xs font-bold tracking-widest text-[#BFB065] uppercase drop-shadow-md md:mb-4"
           >
             Puerto Iguazú · Misiones
           </span>
           <h1
-            class="font-title mb-4 text-7xl font-black tracking-tight text-white drop-shadow-lg"
+            class="font-title mb-0 text-4xl font-black tracking-tight text-white drop-shadow-lg md:mb-4 md:text-7xl"
           >
             Nuestra Galería
           </h1>
           <p
-            class="font-body mx-auto max-w-xl text-xl leading-relaxed text-white/80 italic"
+            class="font-body mt-2 text-sm leading-snug text-white/80 italic md:mx-auto md:max-w-xl md:text-xl md:leading-relaxed"
           >
-            Selva misionera, cultura guaraní y arquitectura única.<br />
-            Viví La Aripuca antes de llegar.
+            Selva misionera, cultura guaraní y arquitectura única.
           </p>
         </div>
       </div>

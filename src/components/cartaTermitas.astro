@@ -1,312 +1,370 @@
 ---
-import LayoutCarta from "../layouts/LayoutCarta.astro";
+const P = {
+  jugoVaso: "$5.000",
+  jugoJarra1000: "$8.000",
+  jugoJarra1500: "$10.000",
+  gaseosas: "$3.500",
+  agua: "$2.500",
+  cervezaLata: "$4.000",
+  cervezaArtesanal: "$5.000",
+  novecento: "$10.000",
+  chacabuco: "$12.000",
+  conejoMalbec: "$15.000",
+  conejoChenin: "$15.000",
+  fernet: "$8.000",
+  daikiri: "$8.000",
+  caipirinia: "$8.000",
+  ginTonic: "$8.000",
+  expresoChico: "$3.000",
+  expresoDoble: "$3.500",
+  expresoCortado: "$3.500",
+  lagrima: "$3.500",
+  cafeConLeche: "$3.500",
+  te: "$2.500",
+  suprema: "$15.500",
+  supremaCaballo: "$17.500",
+  milanesa: "$19.500",
+  milanesaCaballo: "$21.500",
+  pechugraGrille: "$19.000",
+  carreCerdo: "$22.500",
+  lomoNapo: "$23.500",
+  bifeChorizo: "$25.500",
+  pescado: "$26.500",
+  picada: "$35.500",
+  noquis: "$17.000",
+  fetuccinni: "$17.000",
+  sorrentinos: "$19.000",
+  ravioles: "$19.000",
+  sandJyQ: "$12.000",
+  hamburguesa: "$14.500",
+  sandSuprema: "$15.500",
+  sandMila: "$17.000",
+  sandVegetariano: "$17.000",
+  sandLomo: "$22.000",
+  adicionalFritas: "$3.500",
+  mandiocaFrita: "$9.000",
+  papasFritas: "$9.000",
+  huevo: "$1.000",
+  ensaladaMixta: "$8.500",
+  ensaladaCompleta: "$9.000",
+  bombaMandioca: "$4.000",
+  omelette: "$12.000",
+  sopaParaguaya: "$8.000",
+  chipaGuazu: "$8.000",
+  mamon: "$8.000",
+  flan: "$5.000",
+  heladoNativo: "$3.000",
+  heladoDulce: "$3.000",
+};
+
+const menuEs = [
+  {
+    icono: "🥤",
+    nombre: "Bebidas sin Alcohol",
+    nota: null,
+    items: [
+      { nombre: "Jugo Natural de Naranja o Limonada — Vaso 350ml", descripcion: "", precio: P.jugoVaso },
+      { nombre: "Jugo Natural — Jarra 1000ml", descripcion: "", precio: P.jugoJarra1000 },
+      { nombre: "Jugo Natural — Jarra 1500ml", descripcion: "", precio: P.jugoJarra1500 },
+      { nombre: "Gaseosas / Aguas Saborizadas", descripcion: "", precio: P.gaseosas },
+      { nombre: "Agua s/gas - c/gas", descripcion: "", precio: P.agua },
+    ],
+  },
+  {
+    icono: "🍺",
+    nombre: "Cervezas",
+    nota: null,
+    items: [
+      { nombre: "Cerveza Lata (473ml)", descripcion: "", precio: P.cervezaLata },
+      { nombre: "Cerveza Artesanal Holy Lata (473ml)", descripcion: "", precio: P.cervezaArtesanal },
+    ],
+  },
+  {
+    icono: "🍷",
+    nombre: "Vinos",
+    nota: null,
+    items: [
+      { nombre: "Novecento (750ml)", descripcion: "", precio: P.novecento },
+      { nombre: "Chacabuco (750ml)", descripcion: "", precio: P.chacabuco },
+      { nombre: "Conejo Verde Malbec (750ml)", descripcion: "", precio: P.conejoMalbec },
+      { nombre: "Conejo Verde Chenin (750ml)", descripcion: "", precio: P.conejoChenin },
+    ],
+  },
+  {
+    icono: "🍹",
+    nombre: "Tragos (400ml)",
+    nota: null,
+    items: [
+      { nombre: "Fernet Branca con Coca", descripcion: "", precio: P.fernet },
+      { nombre: "Daikiri", descripcion: "Frutilla · Mango · Durazno · Ananá", precio: P.daikiri },
+      { nombre: "Caipiriña", descripcion: "", precio: P.caipirinia },
+      { nombre: "Gin Tonic", descripcion: "", precio: P.ginTonic },
+    ],
+  },
+  {
+    icono: "☕",
+    nombre: "Cafetería",
+    nota: null,
+    items: [
+      { nombre: "Expreso Chico", descripcion: "", precio: P.expresoChico },
+      { nombre: "Expresso Doble", descripcion: "", precio: P.expresoDoble },
+      { nombre: "Expresso Cortado Doble", descripcion: "", precio: P.expresoCortado },
+      { nombre: "Lágrima", descripcion: "", precio: P.lagrima },
+      { nombre: "Café con Leche", descripcion: "", precio: P.cafeConLeche },
+      { nombre: "Té o Mate Cocido", descripcion: "", precio: P.te },
+    ],
+  },
+  {
+    icono: "🥩",
+    nombre: "Opciones al Plato",
+    nota: null,
+    items: [
+      { nombre: "Suprema con 1 guarnición", descripcion: "Ens. mixta, puré o fritas", precio: P.suprema },
+      { nombre: "Suprema a Caballo o Napo. con 1 guarnición", descripcion: "Ens. mixta, puré o fritas", precio: P.supremaCaballo },
+      { nombre: "Milanesa con 1 guarnición", descripcion: "Ens. mixta, puré o fritas", precio: P.milanesa },
+      { nombre: "Milanesa a Caballo o Napo. con 1 guarnición", descripcion: "Ens. mixta, puré o fritas", precio: P.milanesaCaballo },
+      { nombre: "Pechuga Grillé con 1 guarnición", descripcion: "Ens. mixta, puré o fritas", precio: P.pechugraGrille },
+      { nombre: "Carre de Cerdo a la Plancha con 1 guarnición", descripcion: "Ens. mixta, puré o fritas", precio: P.carreCerdo },
+      { nombre: "Lomo Napo o Pechuga Napo. con 1 guarnición", descripcion: "Ens. mixta, puré o fritas", precio: P.lomoNapo },
+      { nombre: "Bife de Chorizo a la Plancha con 1 guarnición", descripcion: "Ens. mixta, puré o fritas", precio: P.bifeChorizo },
+      { nombre: "Pescado de Río c/ Wok de Verduras y Mandioca Frita", descripcion: "", precio: P.pescado },
+      { nombre: "Picada (para 2 personas)", descripcion: "500g de carne, sopa paraguaya, papas y mandioca frita", precio: P.picada },
+    ],
+  },
+  {
+    icono: "🍝",
+    nombre: "Pastas Caseras",
+    nota: "Incluyen una salsa a elección: boloñesa, al pesto, mixta, blanca, roja o pollo con salsa blanca",
+    items: [
+      { nombre: "Ñoquis", descripcion: "", precio: P.noquis },
+      { nombre: "Fideos Fetuccinni", descripcion: "De huevo o espinaca", precio: P.fetuccinni },
+      { nombre: "Sorrentinos de Jamón y Queso", descripcion: "", precio: P.sorrentinos },
+      { nombre: "Ravioles Rellenos de Verdura", descripcion: "", precio: P.ravioles },
+    ],
+  },
+  {
+    icono: "🥪",
+    nombre: "Nuestros Sandwiches",
+    nota: null,
+    items: [
+      { nombre: "Sándwich de Jamón y Queso", descripcion: "Pan casero, lechuga, tomate, jamón y queso", precio: P.sandJyQ },
+      { nombre: "Hamburguesa Completa", descripcion: "Pan casero, hamburguesa casera, jamón, queso, tomate, lechuga y huevo", precio: P.hamburguesa },
+      { nombre: "Sándwich de Suprema o Pechuga Grillé", descripcion: "Pan casero, suprema o pechuga grillada, tomate, queso y huevo", precio: P.sandSuprema },
+      { nombre: "Sándwich de Mila Completo", descripcion: "Pan casero, milanesa de carne, lechuga, tomate, jamón y queso", precio: P.sandMila },
+      { nombre: "Sándwich Vegetariano", descripcion: "Pan casero, lechuga, tomate, morrón, cebolla, zanahoria, zucchini, queso y huevo", precio: P.sandVegetariano },
+      { nombre: "Sándwich de Lomo Completo", descripcion: "Pan casero, lomito de ternera, jamón, queso, lechuga, tomate y huevo", precio: P.sandLomo },
+      { nombre: "Adicional guarnición de fritas", descripcion: "Papa o mandioca", precio: P.adicionalFritas },
+    ],
+  },
+  {
+    icono: "🍟",
+    nombre: "Porciones de Fritas",
+    nota: null,
+    items: [
+      { nombre: "Mandioca Fritas", descripcion: "", precio: P.mandiocaFrita },
+      { nombre: "Papas Fritas", descripcion: "", precio: P.papasFritas },
+      { nombre: "Huevo a la Plancha", descripcion: "", precio: P.huevo },
+    ],
+  },
+  {
+    icono: "🥗",
+    nombre: "Ensaladas",
+    nota: null,
+    items: [
+      { nombre: "Ensalada Mixta", descripcion: "Lechuga, tomate y cebolla", precio: P.ensaladaMixta },
+      { nombre: "Ensalada Completa", descripcion: "Lechuga, tomate, cebolla, zanahoria y huevo", precio: P.ensaladaCompleta },
+    ],
+  },
+  {
+    icono: "🌽",
+    nombre: "Opciones de la Casa",
+    nota: null,
+    items: [
+      { nombre: "Bomba de Mandioca", descripcion: "Relleno c/ queso o jamón y queso", precio: P.bombaMandioca },
+      { nombre: "Omelette Relleno de Queso y Tomate", descripcion: "Con ensalada de lechuga y tomate", precio: P.omelette },
+      { nombre: "Porción de Sopa Paraguaya", descripcion: "Tarta típica elaborada con harina de maíz, queso, leche, huevo y cebolla", precio: P.sopaParaguaya },
+      { nombre: "Porción de Chipa Guazú", descripcion: "Tarta típica elaborada con choclo, queso, leche, huevo y cebolla", precio: P.chipaGuazu },
+    ],
+  },
+  {
+    icono: "🍮",
+    nombre: "Postres",
+    nota: null,
+    items: [
+      { nombre: "Mamón en Almíbar con Queso", descripcion: "", precio: P.mamon },
+      { nombre: "Flan", descripcion: "", precio: P.flan },
+      { nombre: "Helados por Bocha", descripcion: "Yerba mate · Rosella · Jejy'a", precio: P.heladoNativo },
+      { nombre: "Helados por Bocha", descripcion: "Ananá · Dulce de leche", precio: P.heladoDulce },
+    ],
+  },
+];
+
+const footerEs = [
+  "Los precios están expresados en pesos argentinos.",
+  "Consulte a su mozo por opciones especiales.",
+];
 ---
 
-<LayoutCarta>
-  <section class="bg-fondo px-5 py-10 pb-20">
-    <!-- Hojas decorativas de fondo -->
-    <div
-      class="pointer-events-none absolute inset-0 overflow-hidden"
-      aria-hidden="true"
+<section class="bg-fondo px-5 py-10 pb-20">
+  <!-- Hojas decorativas de fondo -->
+  <div
+    class="pointer-events-none absolute inset-0 overflow-hidden"
+    aria-hidden="true"
+  >
+    <svg
+      class="absolute top-10 -right-8 w-56 -rotate-20 opacity-[0.06]"
+      viewBox="0 0 200 250"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <svg
-        class="absolute top-10 -right-8 w-56 -rotate-20 opacity-[0.06]"
-        viewBox="0 0 200 250"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M100 5 C60 30 10 80 10 140 C10 190 50 245 100 245 C150 245 190 190 190 140 C190 80 140 30 100 5Z"
-          fill="var(--color-primary)"></path>
-        <line
-          x1="100"
-          y1="5"
-          x2="100"
-          y2="245"
-          stroke="var(--color-fondo)"
-          stroke-width="2.5"></line>
-        <line
-          x1="100"
-          y1="80"
-          x2="50"
-          y2="120"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="80"
-          x2="150"
-          y2="120"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="130"
-          x2="40"
-          y2="165"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="130"
-          x2="160"
-          y2="165"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="180"
-          x2="60"
-          y2="210"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="180"
-          x2="140"
-          y2="210"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-      </svg>
-      <svg
-        class="absolute top-[35%] -left-10 w-40 rotate-45 opacity-[0.05]"
-        viewBox="0 0 200 250"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M100 5 C60 30 10 80 10 140 C10 190 50 245 100 245 C150 245 190 190 190 140 C190 80 140 30 100 5Z"
-          fill="var(--color-primary)"></path>
-        <line
-          x1="100"
-          y1="5"
-          x2="100"
-          y2="245"
-          stroke="var(--color-fondo)"
-          stroke-width="2.5"></line>
-        <line
-          x1="100"
-          y1="80"
-          x2="50"
-          y2="120"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="80"
-          x2="150"
-          y2="120"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="140"
-          x2="45"
-          y2="175"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="140"
-          x2="155"
-          y2="175"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-      </svg>
-      <svg
-        class="absolute top-[45%] -right-6 w-36 -rotate-30 opacity-[0.06]"
-        viewBox="0 0 200 250"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M100 5 C60 30 10 80 10 140 C10 190 50 245 100 245 C150 245 190 190 190 140 C190 80 140 30 100 5Z"
-          fill="var(--color-primary)"></path>
-        <line
-          x1="100"
-          y1="5"
-          x2="100"
-          y2="245"
-          stroke="var(--color-fondo)"
-          stroke-width="2.5"></line>
-        <line
-          x1="100"
-          y1="90"
-          x2="55"
-          y2="125"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="90"
-          x2="145"
-          y2="125"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="150"
-          x2="50"
-          y2="185"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="150"
-          x2="150"
-          y2="185"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-      </svg>
-      <svg
-        class="absolute bottom-20 -left-8 w-52 rotate-25 opacity-[0.05]"
-        viewBox="0 0 200 250"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M100 5 C60 30 10 80 10 140 C10 190 50 245 100 245 C150 245 190 190 190 140 C190 80 140 30 100 5Z"
-          fill="var(--color-primary)"></path>
-        <line
-          x1="100"
-          y1="5"
-          x2="100"
-          y2="245"
-          stroke="var(--color-fondo)"
-          stroke-width="2.5"></line>
-        <line
-          x1="100"
-          y1="70"
-          x2="45"
-          y2="110"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="70"
-          x2="155"
-          y2="110"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="130"
-          x2="40"
-          y2="165"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="130"
-          x2="160"
-          y2="165"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="190"
-          x2="65"
-          y2="218"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="190"
-          x2="135"
-          y2="218"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-      </svg>
-      <svg
-        class="absolute -right-4 bottom-10 w-44 -rotate-15 opacity-[0.07]"
-        viewBox="0 0 200 250"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M100 5 C60 30 10 80 10 140 C10 190 50 245 100 245 C150 245 190 190 190 140 C190 80 140 30 100 5Z"
-          fill="var(--color-primary)"></path>
-        <line
-          x1="100"
-          y1="5"
-          x2="100"
-          y2="245"
-          stroke="var(--color-fondo)"
-          stroke-width="2.5"></line>
-        <line
-          x1="100"
-          y1="80"
-          x2="50"
-          y2="120"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="80"
-          x2="150"
-          y2="120"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="150"
-          x2="45"
-          y2="185"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-        <line
-          x1="100"
-          y1="150"
-          x2="155"
-          y2="185"
-          stroke="var(--color-fondo)"
-          stroke-width="1.5"></line>
-      </svg>
-    </div>
+      <path
+        d="M100 5 C60 30 10 80 10 140 C10 190 50 245 100 245 C150 245 190 190 190 140 C190 80 140 30 100 5Z"
+        fill="var(--color-primary)"></path>
+      <line x1="100" y1="5" x2="100" y2="245" stroke="var(--color-fondo)" stroke-width="2.5"></line>
+      <line x1="100" y1="80" x2="50" y2="120" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="80" x2="150" y2="120" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="130" x2="40" y2="165" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="130" x2="160" y2="165" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="180" x2="60" y2="210" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="180" x2="140" y2="210" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+    </svg>
+    <svg
+      class="absolute top-[35%] -left-10 w-40 rotate-45 opacity-[0.05]"
+      viewBox="0 0 200 250"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M100 5 C60 30 10 80 10 140 C10 190 50 245 100 245 C150 245 190 190 190 140 C190 80 140 30 100 5Z"
+        fill="var(--color-primary)"></path>
+      <line x1="100" y1="5" x2="100" y2="245" stroke="var(--color-fondo)" stroke-width="2.5"></line>
+      <line x1="100" y1="80" x2="50" y2="120" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="80" x2="150" y2="120" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="140" x2="45" y2="175" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="140" x2="155" y2="175" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+    </svg>
+    <svg
+      class="absolute top-[45%] -right-6 w-36 -rotate-30 opacity-[0.06]"
+      viewBox="0 0 200 250"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M100 5 C60 30 10 80 10 140 C10 190 50 245 100 245 C150 245 190 190 190 140 C190 80 140 30 100 5Z"
+        fill="var(--color-primary)"></path>
+      <line x1="100" y1="5" x2="100" y2="245" stroke="var(--color-fondo)" stroke-width="2.5"></line>
+      <line x1="100" y1="90" x2="55" y2="125" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="90" x2="145" y2="125" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="150" x2="50" y2="185" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="150" x2="150" y2="185" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+    </svg>
+    <svg
+      class="absolute bottom-20 -left-8 w-52 rotate-25 opacity-[0.05]"
+      viewBox="0 0 200 250"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M100 5 C60 30 10 80 10 140 C10 190 50 245 100 245 C150 245 190 190 190 140 C190 80 140 30 100 5Z"
+        fill="var(--color-primary)"></path>
+      <line x1="100" y1="5" x2="100" y2="245" stroke="var(--color-fondo)" stroke-width="2.5"></line>
+      <line x1="100" y1="70" x2="45" y2="110" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="70" x2="155" y2="110" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="130" x2="40" y2="165" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="130" x2="160" y2="165" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="190" x2="65" y2="218" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="190" x2="135" y2="218" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+    </svg>
+    <svg
+      class="absolute -right-4 bottom-10 w-44 -rotate-15 opacity-[0.07]"
+      viewBox="0 0 200 250"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M100 5 C60 30 10 80 10 140 C10 190 50 245 100 245 C150 245 190 190 190 140 C190 80 140 30 100 5Z"
+        fill="var(--color-primary)"></path>
+      <line x1="100" y1="5" x2="100" y2="245" stroke="var(--color-fondo)" stroke-width="2.5"></line>
+      <line x1="100" y1="80" x2="50" y2="120" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="80" x2="150" y2="120" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="150" x2="45" y2="185" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+      <line x1="100" y1="150" x2="155" y2="185" stroke="var(--color-fondo)" stroke-width="1.5"></line>
+    </svg>
+  </div>
 
-    <!-- Selector de idioma -->
-    <div class="mb-8 flex justify-center gap-2">
-      <button
-        class="lang-btn active font-title text-primary border-primary hover:bg-primary rounded-xl border px-4 py-1.5 text-sm transition-all duration-200 hover:text-white"
-        data-lang="es">🇦🇷 Español</button
-      >
-      <button
-        class="lang-btn font-title hover:bg-primary text-primary border-primary rounded-xl border px-4 py-1.5 text-sm transition-all duration-200 hover:text-white"
-        data-lang="en">🇺🇸 English</button
-      >
-      <button
-        class="lang-btn font-title border-primary text-primary hover:bg-primary rounded-xl border px-4 py-1.5 text-sm transition-all duration-200 hover:text-white"
-        data-lang="pt">🇧🇷 Português</button
-      >
-    </div>
+  <!-- Selector de idioma -->
+  <div class="mb-8 flex justify-center gap-2">
+    <button
+      class="lang-btn active font-title text-primary border-primary hover:bg-primary rounded-xl border px-4 py-1.5 text-sm transition-all duration-200 hover:text-white"
+      data-lang="es">🇦🇷 Español</button
+    >
+    <button
+      class="lang-btn font-title hover:bg-primary text-primary border-primary rounded-xl border px-4 py-1.5 text-sm transition-all duration-200 hover:text-white"
+      data-lang="en">🇺🇸 English</button
+    >
+    <button
+      class="lang-btn font-title border-primary text-primary hover:bg-primary rounded-xl border px-4 py-1.5 text-sm transition-all duration-200 hover:text-white"
+      data-lang="pt">🇧🇷 Português</button
+    >
+  </div>
 
-    <!-- Encabezado -->
-    <div class="mb-10 text-center">
-      <h2
-        class="font-title text-primary mb-1 text-5xl leading-tight font-bold"
-      >
-        Las Termitas
-      </h2>
-      <p
-        class="font-title text-secondary mb-4 text-xs tracking-[0.25em] uppercase"
-      >
-        Restaurante
-      </p>
-      <div
-        class="via-secondary mx-auto h-0.5 w-16 bg-linear-to-r from-transparent to-transparent"
-      >
+  <!-- Encabezado -->
+  <div class="mb-10 text-center">
+    <h1 class="font-title text-primary mb-1 text-5xl leading-tight font-bold">
+      Las Termitas
+    </h1>
+    <p class="font-title text-secondary mb-4 text-xs tracking-[0.25em] uppercase">
+      Restaurante
+    </p>
+    <div
+      class="via-secondary mx-auto h-0.5 w-16 bg-linear-to-r from-transparent to-transparent"
+    >
+    </div>
+  </div>
+
+  <!-- Menú español (renderizado en servidor — indexable por Google) -->
+  <div id="menu-es" class="mx-auto flex max-w-3xl flex-col gap-8">
+    {menuEs.map((cat, i) => (
+      <div class="categoria" style={`animation-delay:${i * 0.05}s`}>
+        <div class="cat-header">
+          <span class="cat-icono">{cat.icono}</span>
+          <h2 class="cat-nombre">{cat.nombre}</h2>
+          <div class="cat-linea"></div>
+        </div>
+        {cat.nota && <p class="cat-nota">★ {cat.nota}</p>}
+        <div>
+          {cat.items.map((item) => (
+            <div class="item">
+              <div>
+                <p class="item-nombre">{item.nombre}</p>
+                {item.descripcion && <p class="item-desc">{item.descripcion}</p>}
+              </div>
+              <span class="item-precio">{item.precio}</span>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    ))}
+  </div>
 
-    <div class="mx-auto flex max-w-3xl flex-col gap-8" id="menu-container">
-    </div>
-    <div
-      class="border-primary/20 mx-auto mt-10 max-w-3xl border-t pt-5 text-center"
-      id="carta-footer"
-    >
-    </div>
-  </section>
-</LayoutCarta>
+  <!-- Contenedor dinámico para EN/PT (oculto hasta que el usuario cambie idioma) -->
+  <div id="menu-container" class="mx-auto hidden max-w-3xl flex-col gap-8"></div>
+
+  <!-- Footer español (renderizado en servidor) -->
+  <div
+    id="carta-footer-es"
+    class="border-primary/20 mx-auto mt-10 max-w-3xl border-t pt-5 text-center"
+  >
+    {footerEs.map((f) => <p class="footer-texto">{f}</p>)}
+  </div>
+
+  <!-- Footer dinámico para EN/PT -->
+  <div
+    id="carta-footer"
+    class="border-primary/20 mx-auto mt-10 hidden max-w-3xl border-t pt-5 text-center"
+  >
+  </div>
+</section>
 
 <style>
   .lang-btn.active {
@@ -411,1155 +469,257 @@ import LayoutCarta from "../layouts/LayoutCarta.astro";
 </style>
 
 <script>
-  // ═══════════════════════════════════════════════════════════════
-  // PRECIOS — modificá acá y se actualiza en los tres idiomas
-  // ═══════════════════════════════════════════════════════════════
   const P = {
-    // Bebidas sin alcohol
-    jugoVaso: "$5.000",
-    jugoJarra1000: "$8.000",
-    jugoJarra1500: "$10.000",
-    gaseosas: "$3.500",
-    agua: "$2.500",
-
-    // Cervezas
-    cervezaLata: "$4.000",
-    cervezaArtesanal: "$5.000",
-
-    // Vinos
-    novecento: "$10.000",
-    chacabuco: "$12.000",
-    conejoMalbec: "$15.000",
-    conejoChenin: "$15.000",
-
-    // Tragos
-    fernet: "$8.000",
-    daikiri: "$8.000",
-    caipirinia: "$8.000",
-    ginTonic: "$8.000",
-
-    // Cafetería
-    expresoChico: "$3.000",
-    expresoDoble: "$3.500",
-    expresoCortado: "$3.500",
-    lagrima: "$3.500",
-    cafeConLeche: "$3.500",
-    te: "$2.500",
-
-    // Opciones al plato
-    suprema: "$15.500",
-    supremaCaballo: "$17.500",
-    milanesa: "$19.500",
-    milanesaCaballo: "$21.500",
-    pechugraGrille: "$19.000",
-    carreCerdo: "$22.500",
-    lomoNapo: "$23.500",
-    bifeChorizo: "$25.500",
-    pescado: "$26.500",
-    picada: "$35.500",
-
-    // Pastas
-    noquis: "$17.000",
-    fetuccinni: "$17.000",
-    sorrentinos: "$19.000",
-    ravioles: "$19.000",
-
-    // Sandwiches
-    sandJyQ: "$12.000",
-    hamburguesa: "$14.500",
-    sandSuprema: "$15.500",
-    sandMila: "$17.000",
-    sandVegetariano: "$17.000",
-    sandLomo: "$22.000",
-    adicionalFritas: "$3.500",
-
-    // Fritas
-    mandiocaFrita: "$9.000",
-    papasFritas: "$9.000",
-    huevo: "$1.000",
-
-    // Ensaladas
-    ensaladaMixta: "$8.500",
-    ensaladaCompleta: "$9.000",
-
-    // Opciones de la casa
-    bombaMandioca: "$4.000",
-    omelette: "$12.000",
-    sopaParaguaya: "$8.000",
-    chipaGuazu: "$8.000",
-
-    // Postres
-    mamon: "$8.000",
-    flan: "$5.000",
-    heladoNativo: "$3.000",
-    heladoDulce: "$3.000",
+    jugoVaso: "$5.000", jugoJarra1000: "$8.000", jugoJarra1500: "$10.000",
+    gaseosas: "$3.500", agua: "$2.500", cervezaLata: "$4.000",
+    cervezaArtesanal: "$5.000", novecento: "$10.000", chacabuco: "$12.000",
+    conejoMalbec: "$15.000", conejoChenin: "$15.000", fernet: "$8.000",
+    daikiri: "$8.000", caipirinia: "$8.000", ginTonic: "$8.000",
+    expresoChico: "$3.000", expresoDoble: "$3.500", expresoCortado: "$3.500",
+    lagrima: "$3.500", cafeConLeche: "$3.500", te: "$2.500",
+    suprema: "$15.500", supremaCaballo: "$17.500", milanesa: "$19.500",
+    milanesaCaballo: "$21.500", pechugraGrille: "$19.000", carreCerdo: "$22.500",
+    lomoNapo: "$23.500", bifeChorizo: "$25.500", pescado: "$26.500",
+    picada: "$35.500", noquis: "$17.000", fetuccinni: "$17.000",
+    sorrentinos: "$19.000", ravioles: "$19.000", sandJyQ: "$12.000",
+    hamburguesa: "$14.500", sandSuprema: "$15.500", sandMila: "$17.000",
+    sandVegetariano: "$17.000", sandLomo: "$22.000", adicionalFritas: "$3.500",
+    mandiocaFrita: "$9.000", papasFritas: "$9.000", huevo: "$1.000",
+    ensaladaMixta: "$8.500", ensaladaCompleta: "$9.000", bombaMandioca: "$4.000",
+    omelette: "$12.000", sopaParaguaya: "$8.000", chipaGuazu: "$8.000",
+    mamon: "$8.000", flan: "$5.000", heladoNativo: "$3.000", heladoDulce: "$3.000",
   };
 
-  // ═══════════════════════════════════════════════════════════════
-  // CONVERSIÓN DE MONEDA
-  // ═══════════════════════════════════════════════════════════════
   const USD = 1400;
   const BRL = 280;
 
-  function convertirPrecio(precioARS, lang) {
+  function convertirPrecio(precioARS: string, lang: string) {
     const numero = parseFloat(
       precioARS.replace("$", "").replaceAll(".", "").replace(",", "."),
     );
     if (lang === "en") return "US$ " + (numero / USD).toFixed(2);
-    if (lang === "pt")
-      return "R$ " + (numero / BRL).toFixed(2).replace(".", ",");
+    if (lang === "pt") return "R$ " + (numero / BRL).toFixed(2).replace(".", ",");
     return precioARS;
   }
 
-  // ═══════════════════════════════════════════════════════════════
-  // MENÚ
-  // ═══════════════════════════════════════════════════════════════
-  const menu = {
-    es: {
-      footer: [
-        "Los precios están expresados en pesos argentinos.",
-        "Consulte a su mozo por opciones especiales.",
-      ],
-      categorias: [
-        {
-          icono: "🥤",
-          nombre: "Bebidas sin Alcohol",
-          nota: null,
-          items: [
-            {
-              nombre: "Jugo Natural de Naranja o Limonada — Vaso 350ml",
-              descripcion: "",
-              precio: P.jugoVaso,
-            },
-            {
-              nombre: "Jugo Natural — Jarra 1000ml",
-              descripcion: "",
-              precio: P.jugoJarra1000,
-            },
-            {
-              nombre: "Jugo Natural — Jarra 1500ml",
-              descripcion: "",
-              precio: P.jugoJarra1500,
-            },
-            {
-              nombre: "Gaseosas / Aguas Saborizadas",
-              descripcion: "",
-              precio: P.gaseosas,
-            },
-            { nombre: "Agua s/gas - c/gas", descripcion: "", precio: P.agua },
-          ],
-        },
-        {
-          icono: "🍺",
-          nombre: "Cervezas",
-          nota: null,
-          items: [
-            {
-              nombre: "Cerveza Lata (473ml)",
-              descripcion: "",
-              precio: P.cervezaLata,
-            },
-            {
-              nombre: "Cerveza Artesanal Holy Lata (473ml)",
-              descripcion: "",
-              precio: P.cervezaArtesanal,
-            },
-          ],
-        },
-        {
-          icono: "🍷",
-          nombre: "Vinos",
-          nota: null,
-          items: [
-            {
-              nombre: "Novecento (750ml)",
-              descripcion: "",
-              precio: P.novecento,
-            },
-            {
-              nombre: "Chacabuco (750ml)",
-              descripcion: "",
-              precio: P.chacabuco,
-            },
-            {
-              nombre: "Conejo Verde Malbec (750ml)",
-              descripcion: "",
-              precio: P.conejoMalbec,
-            },
-            {
-              nombre: "Conejo Verde Chenin (750ml)",
-              descripcion: "",
-              precio: P.conejoChenin,
-            },
-          ],
-        },
-        {
-          icono: "🍹",
-          nombre: "Tragos (400ml)",
-          nota: null,
-          items: [
-            {
-              nombre: "Fernet Branca con Coca",
-              descripcion: "",
-              precio: P.fernet,
-            },
-            {
-              nombre: "Daikiri",
-              descripcion: "Frutilla · Mango · Durazno · Ananá",
-              precio: P.daikiri,
-            },
-            { nombre: "Caipiriña", descripcion: "", precio: P.caipirinia },
-            { nombre: "Gin Tonic", descripcion: "", precio: P.ginTonic },
-          ],
-        },
-        {
-          icono: "☕",
-          nombre: "Cafetería",
-          nota: null,
-          items: [
-            {
-              nombre: "Expreso Chico",
-              descripcion: "",
-              precio: P.expresoChico,
-            },
-            {
-              nombre: "Expresso Doble",
-              descripcion: "",
-              precio: P.expresoDoble,
-            },
-            {
-              nombre: "Expresso Cortado Doble",
-              descripcion: "",
-              precio: P.expresoCortado,
-            },
-            { nombre: "Lágrima", descripcion: "", precio: P.lagrima },
-            {
-              nombre: "Café con Leche",
-              descripcion: "",
-              precio: P.cafeConLeche,
-            },
-            { nombre: "Té o Mate Cocido", descripcion: "", precio: P.te },
-          ],
-        },
-        {
-          icono: "🥩",
-          nombre: "Opciones al Plato",
-          nota: null,
-          items: [
-            {
-              nombre: "Suprema con 1 guarnición",
-              descripcion: "Ens. mixta, puré o fritas",
-              precio: P.suprema,
-            },
-            {
-              nombre: "Suprema a Caballo o Napo. con 1 guarnición",
-              descripcion: "Ens. mixta, puré o fritas",
-              precio: P.supremaCaballo,
-            },
-            {
-              nombre: "Milanesa con 1 guarnición",
-              descripcion: "Ens. mixta, puré o fritas",
-              precio: P.milanesa,
-            },
-            {
-              nombre: "Milanesa a Caballo o Napo. con 1 guarnición",
-              descripcion: "Ens. mixta, puré o fritas",
-              precio: P.milanesaCaballo,
-            },
-            {
-              nombre: "Pechuga Grillé con 1 guarnición",
-              descripcion: "Ens. mixta, puré o fritas",
-              precio: P.pechugraGrille,
-            },
-            {
-              nombre: "Carre de Cerdo a la Plancha con 1 guarnición",
-              descripcion: "Ens. mixta, puré o fritas",
-              precio: P.carreCerdo,
-            },
-            {
-              nombre: "Lomo Napo o Pechuga Napo. con 1 guarnición",
-              descripcion: "Ens. mixta, puré o fritas",
-              precio: P.lomoNapo,
-            },
-            {
-              nombre: "Bife de Chorizo a la Plancha con 1 guarnición",
-              descripcion: "Ens. mixta, puré o fritas",
-              precio: P.bifeChorizo,
-            },
-            {
-              nombre: "Pescado de Río c/ Wok de Verduras y Mandioca Frita",
-              descripcion: "",
-              precio: P.pescado,
-            },
-            {
-              nombre: "Picada (para 2 personas)",
-              descripcion:
-                "500g de carne, sopa paraguaya, papas y mandioca frita",
-              precio: P.picada,
-            },
-          ],
-        },
-        {
-          icono: "🍝",
-          nombre: "Pastas Caseras",
-          nota: "Incluyen una salsa a elección: boloñesa, al pesto, mixta, blanca, roja o pollo con salsa blanca",
-          items: [
-            { nombre: "Ñoquis", descripcion: "", precio: P.noquis },
-            {
-              nombre: "Fideos Fetuccinni",
-              descripcion: "De huevo o espinaca",
-              precio: P.fetuccinni,
-            },
-            {
-              nombre: "Sorrentinos de Jamón y Queso",
-              descripcion: "",
-              precio: P.sorrentinos,
-            },
-            {
-              nombre: "Ravioles Rellenos de Verdura",
-              descripcion: "",
-              precio: P.ravioles,
-            },
-          ],
-        },
-        {
-          icono: "🥪",
-          nombre: "Nuestros Sandwiches",
-          nota: null,
-          items: [
-            {
-              nombre: "Sándwich de Jamón y Queso",
-              descripcion: "Pan casero, lechuga, tomate, jamón y queso",
-              precio: P.sandJyQ,
-            },
-            {
-              nombre: "Hamburguesa Completa",
-              descripcion:
-                "Pan casero, hamburguesa casera, jamón, queso, tomate, lechuga y huevo",
-              precio: P.hamburguesa,
-            },
-            {
-              nombre: "Sándwich de Suprema o Pechuga Grillé",
-              descripcion:
-                "Pan casero, suprema o pechuga grillada, tomate, queso y huevo",
-              precio: P.sandSuprema,
-            },
-            {
-              nombre: "Sándwich de Mila Completo",
-              descripcion:
-                "Pan casero, milanesa de carne, lechuga, tomate, jamón y queso",
-              precio: P.sandMila,
-            },
-            {
-              nombre: "Sándwich Vegetariano",
-              descripcion:
-                "Pan casero, lechuga, tomate, morrón, cebolla, zanahoria, zucchini, queso y huevo",
-              precio: P.sandVegetariano,
-            },
-            {
-              nombre: "Sándwich de Lomo Completo",
-              descripcion:
-                "Pan casero, lomito de ternera, jamón, queso, lechuga, tomate y huevo",
-              precio: P.sandLomo,
-            },
-            {
-              nombre: "Adicional guarnición de fritas",
-              descripcion: "Papa o mandioca",
-              precio: P.adicionalFritas,
-            },
-          ],
-        },
-        {
-          icono: "🍟",
-          nombre: "Porciones de Fritas",
-          nota: null,
-          items: [
-            {
-              nombre: "Mandioca Fritas",
-              descripcion: "",
-              precio: P.mandiocaFrita,
-            },
-            { nombre: "Papas Fritas", descripcion: "", precio: P.papasFritas },
-            { nombre: "Huevo a la Plancha", descripcion: "", precio: P.huevo },
-          ],
-        },
-        {
-          icono: "🥗",
-          nombre: "Ensaladas",
-          nota: null,
-          items: [
-            {
-              nombre: "Ensalada Mixta",
-              descripcion: "Lechuga, tomate y cebolla",
-              precio: P.ensaladaMixta,
-            },
-            {
-              nombre: "Ensalada Completa",
-              descripcion: "Lechuga, tomate, cebolla, zanahoria y huevo",
-              precio: P.ensaladaCompleta,
-            },
-          ],
-        },
-        {
-          icono: "🌽",
-          nombre: "Opciones de la Casa",
-          nota: null,
-          items: [
-            {
-              nombre: "Bomba de Mandioca",
-              descripcion: "Relleno c/ queso o jamón y queso",
-              precio: P.bombaMandioca,
-            },
-            {
-              nombre: "Omelette Relleno de Queso y Tomate",
-              descripcion: "Con ensalada de lechuga y tomate",
-              precio: P.omelette,
-            },
-            {
-              nombre: "Porción de Sopa Paraguaya",
-              descripcion:
-                "Tarta típica elaborada con harina de maíz, queso, leche, huevo y cebolla",
-              precio: P.sopaParaguaya,
-            },
-            {
-              nombre: "Porción de Chipa Guazú",
-              descripcion:
-                "Tarta típica elaborada con choclo, queso, leche, huevo y cebolla",
-              precio: P.chipaGuazu,
-            },
-          ],
-        },
-        {
-          icono: "🍮",
-          nombre: "Postres",
-          nota: null,
-          items: [
-            {
-              nombre: "Mamón en Almíbar con Queso",
-              descripcion: "",
-              precio: P.mamon,
-            },
-            { nombre: "Flan", descripcion: "", precio: P.flan },
-            {
-              nombre: "Helados por Bocha",
-              descripcion: "Yerba mate · Rosella · Jejy'a",
-              precio: P.heladoNativo,
-            },
-            {
-              nombre: "Helados por Bocha",
-              descripcion: "Ananá · Dulce de leche",
-              precio: P.heladoDulce,
-            },
-          ],
-        },
-      ],
-    },
-
+  const menu: Record<string, { footer: string[]; categorias: any[] }> = {
     en: {
       footer: [
         "Prices are displayed in US dollars (approximate).",
         "Ask your server for special options.",
       ],
       categorias: [
-        {
-          icono: "🥤",
-          nombre: "Non-Alcoholic Drinks",
-          nota: null,
-          items: [
-            {
-              nombre: "Fresh Orange Juice or Lemonade — Glass 350ml",
-              descripcion: "",
-              precio: P.jugoVaso,
-            },
-            {
-              nombre: "Fresh Juice — Jug 1000ml",
-              descripcion: "",
-              precio: P.jugoJarra1000,
-            },
-            {
-              nombre: "Fresh Juice — Jug 1500ml",
-              descripcion: "",
-              precio: P.jugoJarra1500,
-            },
-            {
-              nombre: "Soft Drinks / Flavored Water",
-              descripcion: "",
-              precio: P.gaseosas,
-            },
-            {
-              nombre: "Still / Sparkling Water",
-              descripcion: "",
-              precio: P.agua,
-            },
-          ],
-        },
-        {
-          icono: "🍺",
-          nombre: "Beer",
-          nota: null,
-          items: [
-            {
-              nombre: "Beer Can (473ml)",
-              descripcion: "",
-              precio: P.cervezaLata,
-            },
-            {
-              nombre: "Holy Craft Beer Can (473ml)",
-              descripcion: "",
-              precio: P.cervezaArtesanal,
-            },
-          ],
-        },
-        {
-          icono: "🍷",
-          nombre: "Wine",
-          nota: null,
-          items: [
-            {
-              nombre: "Novecento (750ml)",
-              descripcion: "",
-              precio: P.novecento,
-            },
-            {
-              nombre: "Chacabuco (750ml)",
-              descripcion: "",
-              precio: P.chacabuco,
-            },
-            {
-              nombre: "Conejo Verde Malbec (750ml)",
-              descripcion: "",
-              precio: P.conejoMalbec,
-            },
-            {
-              nombre: "Conejo Verde Chenin (750ml)",
-              descripcion: "",
-              precio: P.conejoChenin,
-            },
-          ],
-        },
-        {
-          icono: "🍹",
-          nombre: "Cocktails (400ml)",
-          nota: null,
-          items: [
-            {
-              nombre: "Fernet Branca with Coke",
-              descripcion: "",
-              precio: P.fernet,
-            },
-            {
-              nombre: "Daiquiri",
-              descripcion: "Strawberry · Mango · Peach · Pineapple",
-              precio: P.daikiri,
-            },
-            { nombre: "Caipirinha", descripcion: "", precio: P.caipirinia },
-            { nombre: "Gin Tonic", descripcion: "", precio: P.ginTonic },
-          ],
-        },
-        {
-          icono: "☕",
-          nombre: "Coffee Bar",
-          nota: null,
-          items: [
-            { nombre: "Espresso", descripcion: "", precio: P.expresoChico },
-            {
-              nombre: "Double Espresso",
-              descripcion: "",
-              precio: P.expresoDoble,
-            },
-            {
-              nombre: "Double Cortado",
-              descripcion: "",
-              precio: P.expresoCortado,
-            },
-            {
-              nombre: "Lágrima (milk with a drop of coffee)",
-              descripcion: "",
-              precio: P.lagrima,
-            },
-            { nombre: "White Coffee", descripcion: "", precio: P.cafeConLeche },
-            { nombre: "Tea or Mate Cocido", descripcion: "", precio: P.te },
-          ],
-        },
-        {
-          icono: "🥩",
-          nombre: "Main Dishes",
-          nota: null,
-          items: [
-            {
-              nombre: "Chicken breast with 1 side",
-              descripcion: "Mixed salad, mash or fries",
-              precio: P.suprema,
-            },
-            {
-              nombre: "Chicken breast on horseback or Neapolitan with 1 side",
-              descripcion: "Mixed salad, mash or fries",
-              precio: P.supremaCaballo,
-            },
-            {
-              nombre: "Breaded cutlet with 1 side",
-              descripcion: "Mixed salad, mash or fries",
-              precio: P.milanesa,
-            },
-            {
-              nombre: "Cutlet on horseback or Neapolitan with 1 side",
-              descripcion: "Mixed salad, mash or fries",
-              precio: P.milanesaCaballo,
-            },
-            {
-              nombre: "Grilled chicken breast with 1 side",
-              descripcion: "Mixed salad, mash or fries",
-              precio: P.pechugraGrille,
-            },
-            {
-              nombre: "Grilled pork loin with 1 side",
-              descripcion: "Mixed salad, mash or fries",
-              precio: P.carreCerdo,
-            },
-            {
-              nombre: "Neapolitan tenderloin or chicken with 1 side",
-              descripcion: "Mixed salad, mash or fries",
-              precio: P.lomoNapo,
-            },
-            {
-              nombre: "Grilled sirloin steak with 1 side",
-              descripcion: "Mixed salad, mash or fries",
-              precio: P.bifeChorizo,
-            },
-            {
-              nombre: "River fish with vegetable wok and fried cassava",
-              descripcion: "",
-              precio: P.pescado,
-            },
-            {
-              nombre: "Sharing platter (2 people)",
-              descripcion:
-                "500g beef, Paraguayan cornbread, potato and cassava fries",
-              precio: P.picada,
-            },
-          ],
-        },
-        {
-          icono: "🍝",
-          nombre: "Homemade Pasta",
-          nota: "Includes one sauce of your choice: bolognese, pesto, mixed, white, red or chicken in white sauce",
-          items: [
-            { nombre: "Gnocchi", descripcion: "", precio: P.noquis },
-            {
-              nombre: "Fettuccine",
-              descripcion: "Egg or spinach",
-              precio: P.fetuccinni,
-            },
-            {
-              nombre: "Ham & cheese sorrentinos",
-              descripcion: "",
-              precio: P.sorrentinos,
-            },
-            {
-              nombre: "Vegetable-filled ravioli",
-              descripcion: "",
-              precio: P.ravioles,
-            },
-          ],
-        },
-        {
-          icono: "🥪",
-          nombre: "Our Sandwiches",
-          nota: null,
-          items: [
-            {
-              nombre: "Ham & Cheese Sandwich",
-              descripcion: "House bread, lettuce, tomato, ham and cheese",
-              precio: P.sandJyQ,
-            },
-            {
-              nombre: "Full Burger",
-              descripcion:
-                "House bread, homemade patty, ham, cheese, tomato, lettuce and egg",
-              precio: P.hamburguesa,
-            },
-            {
-              nombre: "Chicken Breast Sandwich",
-              descripcion:
-                "House bread, chicken breast, tomato, cheese and egg",
-              precio: P.sandSuprema,
-            },
-            {
-              nombre: "Full Schnitzel Sandwich",
-              descripcion:
-                "House bread, beef schnitzel, lettuce, tomato, ham and cheese",
-              precio: P.sandMila,
-            },
-            {
-              nombre: "Vegetarian Sandwich",
-              descripcion:
-                "House bread, lettuce, tomato, bell pepper, onion, carrot, zucchini, cheese and egg",
-              precio: P.sandVegetariano,
-            },
-            {
-              nombre: "Full Tenderloin Sandwich",
-              descripcion:
-                "House bread, veal tenderloin, ham, cheese, lettuce, tomato and egg",
-              precio: P.sandLomo,
-            },
-            {
-              nombre: "Extra side of fries",
-              descripcion: "Potato or cassava",
-              precio: P.adicionalFritas,
-            },
-          ],
-        },
-        {
-          icono: "🍟",
-          nombre: "Fried Sides",
-          nota: null,
-          items: [
-            {
-              nombre: "Fried Cassava",
-              descripcion: "",
-              precio: P.mandiocaFrita,
-            },
-            { nombre: "French Fries", descripcion: "", precio: P.papasFritas },
-            { nombre: "Fried Egg", descripcion: "", precio: P.huevo },
-          ],
-        },
-        {
-          icono: "🥗",
-          nombre: "Salads",
-          nota: null,
-          items: [
-            {
-              nombre: "Mixed Salad",
-              descripcion: "Lettuce, tomato and onion",
-              precio: P.ensaladaMixta,
-            },
-            {
-              nombre: "Full Salad",
-              descripcion: "Lettuce, tomato, onion, carrot and egg",
-              precio: P.ensaladaCompleta,
-            },
-          ],
-        },
-        {
-          icono: "🌽",
-          nombre: "House Specialties",
-          nota: null,
-          items: [
-            {
-              nombre: "Stuffed Cassava Ball",
-              descripcion: "Filled with cheese or ham & cheese",
-              precio: P.bombaMandioca,
-            },
-            {
-              nombre: "Cheese & Tomato Omelette",
-              descripcion: "With lettuce and tomato salad",
-              precio: P.omelette,
-            },
-            {
-              nombre: "Paraguayan Cornbread (slice)",
-              descripcion:
-                "Traditional savory cake with cornmeal, cheese, milk, egg and onion",
-              precio: P.sopaParaguaya,
-            },
-            {
-              nombre: "Chipa Guazú (slice)",
-              descripcion:
-                "Traditional savory cake with corn, cheese, milk, egg and onion",
-              precio: P.chipaGuazu,
-            },
-          ],
-        },
-        {
-          icono: "🍮",
-          nombre: "Desserts",
-          nota: null,
-          items: [
-            {
-              nombre: "Papaya in Syrup with Cheese",
-              descripcion: "",
-              precio: P.mamon,
-            },
-            { nombre: "Flan", descripcion: "", precio: P.flan },
-            {
-              nombre: "Ice Cream (scoop)",
-              descripcion: "Yerba mate · Rosella · Jejy'a",
-              precio: P.heladoNativo,
-            },
-            {
-              nombre: "Ice Cream (scoop)",
-              descripcion: "Pineapple · Dulce de leche",
-              precio: P.heladoDulce,
-            },
-          ],
-        },
+        { icono: "🥤", nombre: "Non-Alcoholic Drinks", nota: null, items: [
+          { nombre: "Fresh Orange Juice or Lemonade — Glass 350ml", descripcion: "", precio: P.jugoVaso },
+          { nombre: "Fresh Juice — Jug 1000ml", descripcion: "", precio: P.jugoJarra1000 },
+          { nombre: "Fresh Juice — Jug 1500ml", descripcion: "", precio: P.jugoJarra1500 },
+          { nombre: "Soft Drinks / Flavored Water", descripcion: "", precio: P.gaseosas },
+          { nombre: "Still / Sparkling Water", descripcion: "", precio: P.agua },
+        ]},
+        { icono: "🍺", nombre: "Beer", nota: null, items: [
+          { nombre: "Beer Can (473ml)", descripcion: "", precio: P.cervezaLata },
+          { nombre: "Holy Craft Beer Can (473ml)", descripcion: "", precio: P.cervezaArtesanal },
+        ]},
+        { icono: "🍷", nombre: "Wine", nota: null, items: [
+          { nombre: "Novecento (750ml)", descripcion: "", precio: P.novecento },
+          { nombre: "Chacabuco (750ml)", descripcion: "", precio: P.chacabuco },
+          { nombre: "Conejo Verde Malbec (750ml)", descripcion: "", precio: P.conejoMalbec },
+          { nombre: "Conejo Verde Chenin (750ml)", descripcion: "", precio: P.conejoChenin },
+        ]},
+        { icono: "🍹", nombre: "Cocktails (400ml)", nota: null, items: [
+          { nombre: "Fernet Branca with Coke", descripcion: "", precio: P.fernet },
+          { nombre: "Daiquiri", descripcion: "Strawberry · Mango · Peach · Pineapple", precio: P.daikiri },
+          { nombre: "Caipirinha", descripcion: "", precio: P.caipirinia },
+          { nombre: "Gin Tonic", descripcion: "", precio: P.ginTonic },
+        ]},
+        { icono: "☕", nombre: "Coffee Bar", nota: null, items: [
+          { nombre: "Espresso", descripcion: "", precio: P.expresoChico },
+          { nombre: "Double Espresso", descripcion: "", precio: P.expresoDoble },
+          { nombre: "Double Cortado", descripcion: "", precio: P.expresoCortado },
+          { nombre: "Lágrima (milk with a drop of coffee)", descripcion: "", precio: P.lagrima },
+          { nombre: "White Coffee", descripcion: "", precio: P.cafeConLeche },
+          { nombre: "Tea or Mate Cocido", descripcion: "", precio: P.te },
+        ]},
+        { icono: "🥩", nombre: "Main Dishes", nota: null, items: [
+          { nombre: "Chicken breast with 1 side", descripcion: "Mixed salad, mash or fries", precio: P.suprema },
+          { nombre: "Chicken breast on horseback or Neapolitan with 1 side", descripcion: "Mixed salad, mash or fries", precio: P.supremaCaballo },
+          { nombre: "Breaded cutlet with 1 side", descripcion: "Mixed salad, mash or fries", precio: P.milanesa },
+          { nombre: "Cutlet on horseback or Neapolitan with 1 side", descripcion: "Mixed salad, mash or fries", precio: P.milanesaCaballo },
+          { nombre: "Grilled chicken breast with 1 side", descripcion: "Mixed salad, mash or fries", precio: P.pechugraGrille },
+          { nombre: "Grilled pork loin with 1 side", descripcion: "Mixed salad, mash or fries", precio: P.carreCerdo },
+          { nombre: "Neapolitan tenderloin or chicken with 1 side", descripcion: "Mixed salad, mash or fries", precio: P.lomoNapo },
+          { nombre: "Grilled sirloin steak with 1 side", descripcion: "Mixed salad, mash or fries", precio: P.bifeChorizo },
+          { nombre: "River fish with vegetable wok and fried cassava", descripcion: "", precio: P.pescado },
+          { nombre: "Sharing platter (2 people)", descripcion: "500g beef, Paraguayan cornbread, potato and cassava fries", precio: P.picada },
+        ]},
+        { icono: "🍝", nombre: "Homemade Pasta", nota: "Includes one sauce of your choice: bolognese, pesto, mixed, white, red or chicken in white sauce", items: [
+          { nombre: "Gnocchi", descripcion: "", precio: P.noquis },
+          { nombre: "Fettuccine", descripcion: "Egg or spinach", precio: P.fetuccinni },
+          { nombre: "Ham & cheese sorrentinos", descripcion: "", precio: P.sorrentinos },
+          { nombre: "Vegetable-filled ravioli", descripcion: "", precio: P.ravioles },
+        ]},
+        { icono: "🥪", nombre: "Our Sandwiches", nota: null, items: [
+          { nombre: "Ham & Cheese Sandwich", descripcion: "House bread, lettuce, tomato, ham and cheese", precio: P.sandJyQ },
+          { nombre: "Full Burger", descripcion: "House bread, homemade patty, ham, cheese, tomato, lettuce and egg", precio: P.hamburguesa },
+          { nombre: "Chicken Breast Sandwich", descripcion: "House bread, chicken breast, tomato, cheese and egg", precio: P.sandSuprema },
+          { nombre: "Full Schnitzel Sandwich", descripcion: "House bread, beef schnitzel, lettuce, tomato, ham and cheese", precio: P.sandMila },
+          { nombre: "Vegetarian Sandwich", descripcion: "House bread, lettuce, tomato, bell pepper, onion, carrot, zucchini, cheese and egg", precio: P.sandVegetariano },
+          { nombre: "Full Tenderloin Sandwich", descripcion: "House bread, veal tenderloin, ham, cheese, lettuce, tomato and egg", precio: P.sandLomo },
+          { nombre: "Extra side of fries", descripcion: "Potato or cassava", precio: P.adicionalFritas },
+        ]},
+        { icono: "🍟", nombre: "Fried Sides", nota: null, items: [
+          { nombre: "Fried Cassava", descripcion: "", precio: P.mandiocaFrita },
+          { nombre: "French Fries", descripcion: "", precio: P.papasFritas },
+          { nombre: "Fried Egg", descripcion: "", precio: P.huevo },
+        ]},
+        { icono: "🥗", nombre: "Salads", nota: null, items: [
+          { nombre: "Mixed Salad", descripcion: "Lettuce, tomato and onion", precio: P.ensaladaMixta },
+          { nombre: "Full Salad", descripcion: "Lettuce, tomato, onion, carrot and egg", precio: P.ensaladaCompleta },
+        ]},
+        { icono: "🌽", nombre: "House Specialties", nota: null, items: [
+          { nombre: "Stuffed Cassava Ball", descripcion: "Filled with cheese or ham & cheese", precio: P.bombaMandioca },
+          { nombre: "Cheese & Tomato Omelette", descripcion: "With lettuce and tomato salad", precio: P.omelette },
+          { nombre: "Paraguayan Cornbread (slice)", descripcion: "Traditional savory cake with cornmeal, cheese, milk, egg and onion", precio: P.sopaParaguaya },
+          { nombre: "Chipa Guazú (slice)", descripcion: "Traditional savory cake with corn, cheese, milk, egg and onion", precio: P.chipaGuazu },
+        ]},
+        { icono: "🍮", nombre: "Desserts", nota: null, items: [
+          { nombre: "Papaya in Syrup with Cheese", descripcion: "", precio: P.mamon },
+          { nombre: "Flan", descripcion: "", precio: P.flan },
+          { nombre: "Ice Cream (scoop)", descripcion: "Yerba mate · Rosella · Jejy'a", precio: P.heladoNativo },
+          { nombre: "Ice Cream (scoop)", descripcion: "Pineapple · Dulce de leche", precio: P.heladoDulce },
+        ]},
       ],
     },
-
     pt: {
       footer: [
         "Os preços são exibidos em reais brasileiros (aproximado).",
         "Consulte o garçom sobre opções especiais.",
       ],
       categorias: [
-        {
-          icono: "🥤",
-          nombre: "Bebidas sem Álcool",
-          nota: null,
-          items: [
-            {
-              nombre: "Suco Natural de Laranja ou Limonada — Copo 350ml",
-              descripcion: "",
-              precio: P.jugoVaso,
-            },
-            {
-              nombre: "Suco Natural — Jarra 1000ml",
-              descripcion: "",
-              precio: P.jugoJarra1000,
-            },
-            {
-              nombre: "Suco Natural — Jarra 1500ml",
-              descripcion: "",
-              precio: P.jugoJarra1500,
-            },
-            {
-              nombre: "Refrigerantes / Águas Saborizadas",
-              descripcion: "",
-              precio: P.gaseosas,
-            },
-            { nombre: "Água s/ gás - c/ gás", descripcion: "", precio: P.agua },
-          ],
-        },
-        {
-          icono: "🍺",
-          nombre: "Cervejas",
-          nota: null,
-          items: [
-            {
-              nombre: "Cerveja Lata (473ml)",
-              descripcion: "",
-              precio: P.cervezaLata,
-            },
-            {
-              nombre: "Cerveja Artesanal Holy Lata (473ml)",
-              descripcion: "",
-              precio: P.cervezaArtesanal,
-            },
-          ],
-        },
-        {
-          icono: "🍷",
-          nombre: "Vinhos",
-          nota: null,
-          items: [
-            {
-              nombre: "Novecento (750ml)",
-              descripcion: "",
-              precio: P.novecento,
-            },
-            {
-              nombre: "Chacabuco (750ml)",
-              descripcion: "",
-              precio: P.chacabuco,
-            },
-            {
-              nombre: "Conejo Verde Malbec (750ml)",
-              descripcion: "",
-              precio: P.conejoMalbec,
-            },
-            {
-              nombre: "Conejo Verde Chenin (750ml)",
-              descripcion: "",
-              precio: P.conejoChenin,
-            },
-          ],
-        },
-        {
-          icono: "🍹",
-          nombre: "Drinks (400ml)",
-          nota: null,
-          items: [
-            {
-              nombre: "Fernet Branca com Coca",
-              descripcion: "",
-              precio: P.fernet,
-            },
-            {
-              nombre: "Daiquiri",
-              descripcion: "Morango · Manga · Pêssego · Abacaxi",
-              precio: P.daikiri,
-            },
-            { nombre: "Caipirinha", descripcion: "", precio: P.caipirinia },
-            { nombre: "Gin Tônica", descripcion: "", precio: P.ginTonic },
-          ],
-        },
-        {
-          icono: "☕",
-          nombre: "Cafeteria",
-          nota: null,
-          items: [
-            {
-              nombre: "Expresso Pequeno",
-              descripcion: "",
-              precio: P.expresoChico,
-            },
-            {
-              nombre: "Expresso Duplo",
-              descripcion: "",
-              precio: P.expresoDoble,
-            },
-            {
-              nombre: "Expresso Cortado Duplo",
-              descripcion: "",
-              precio: P.expresoCortado,
-            },
-            { nombre: "Lágrima", descripcion: "", precio: P.lagrima },
-            {
-              nombre: "Café com Leite",
-              descripcion: "",
-              precio: P.cafeConLeche,
-            },
-            { nombre: "Chá ou Mate Cozido", descripcion: "", precio: P.te },
-          ],
-        },
-        {
-          icono: "🥩",
-          nombre: "Pratos Principais",
-          nota: null,
-          items: [
-            {
-              nombre: "Suprema com 1 acompanhamento",
-              descripcion: "Salada mista, purê ou fritas",
-              precio: P.suprema,
-            },
-            {
-              nombre: "Suprema a cavalo ou Napo. com 1 acompanhamento",
-              descripcion: "Salada mista, purê ou fritas",
-              precio: P.supremaCaballo,
-            },
-            {
-              nombre: "Milanesa com 1 acompanhamento",
-              descripcion: "Salada mista, purê ou fritas",
-              precio: P.milanesa,
-            },
-            {
-              nombre: "Milanesa a cavalo ou Napo. com 1 acompanhamento",
-              descripcion: "Salada mista, purê ou fritas",
-              precio: P.milanesaCaballo,
-            },
-            {
-              nombre: "Peito de frango grelhado com 1 acompanhamento",
-              descripcion: "Salada mista, purê ou fritas",
-              precio: P.pechugraGrille,
-            },
-            {
-              nombre: "Carré de porco na chapa com 1 acompanhamento",
-              descripcion: "Salada mista, purê ou fritas",
-              precio: P.carreCerdo,
-            },
-            {
-              nombre: "Filé Napo ou Peito Napo. com 1 acompanhamento",
-              descripcion: "Salada mista, purê ou fritas",
-              precio: P.lomoNapo,
-            },
-            {
-              nombre: "Bife de chorizo na chapa com 1 acompanhamento",
-              descripcion: "Salada mista, purê ou fritas",
-              precio: P.bifeChorizo,
-            },
-            {
-              nombre: "Peixe de rio c/ wok de legumes e mandioca frita",
-              descripcion: "",
-              precio: P.pescado,
-            },
-            {
-              nombre: "Picada (para 2 pessoas)",
-              descripcion:
-                "500g de carne, sopa paraguaia, batatas e mandioca frita",
-              precio: P.picada,
-            },
-          ],
-        },
-        {
-          icono: "🍝",
-          nombre: "Massas Caseiras",
-          nota: "Incluem um molho à escolha: bolonhesa, pesto, misto, branco, vermelho ou frango com molho branco",
-          items: [
-            { nombre: "Nhoque", descripcion: "", precio: P.noquis },
-            {
-              nombre: "Fetuccine",
-              descripcion: "De ovo ou espinafre",
-              precio: P.fetuccinni,
-            },
-            {
-              nombre: "Sorrentinos de presunto e queijo",
-              descripcion: "",
-              precio: P.sorrentinos,
-            },
-            {
-              nombre: "Ravióli recheado de verdura",
-              descripcion: "",
-              precio: P.ravioles,
-            },
-          ],
-        },
-        {
-          icono: "🥪",
-          nombre: "Nossos Sanduíches",
-          nota: null,
-          items: [
-            {
-              nombre: "Sanduíche de Presunto e Queijo",
-              descripcion: "Pão caseiro, alface, tomate, presunto e queijo",
-              precio: P.sandJyQ,
-            },
-            {
-              nombre: "Hambúrguer Completo",
-              descripcion:
-                "Pão caseiro, hambúrguer artesanal, presunto, queijo, tomate, alface e ovo",
-              precio: P.hamburguesa,
-            },
-            {
-              nombre: "Sanduíche de Suprema ou Peito Grelhado",
-              descripcion:
-                "Pão caseiro, suprema ou peito grelhado, tomate, queijo e ovo",
-              precio: P.sandSuprema,
-            },
-            {
-              nombre: "Sanduíche de Milanesa Completo",
-              descripcion:
-                "Pão caseiro, milanesa de carne, alface, tomate, presunto e queijo",
-              precio: P.sandMila,
-            },
-            {
-              nombre: "Sanduíche Vegetariano",
-              descripcion:
-                "Pão caseiro, alface, tomate, pimentão, cebola, cenoura, abobrinha, queijo e ovo",
-              precio: P.sandVegetariano,
-            },
-            {
-              nombre: "Sanduíche de Filé Completo",
-              descripcion:
-                "Pão caseiro, filé de vitela, presunto, queijo, alface, tomate e ovo",
-              precio: P.sandLomo,
-            },
-            {
-              nombre: "Acompanhamento extra de fritas",
-              descripcion: "Batata ou mandioca",
-              precio: P.adicionalFritas,
-            },
-          ],
-        },
-        {
-          icono: "🍟",
-          nombre: "Porções de Fritas",
-          nota: null,
-          items: [
-            {
-              nombre: "Mandioca Frita",
-              descripcion: "",
-              precio: P.mandiocaFrita,
-            },
-            { nombre: "Batata Frita", descripcion: "", precio: P.papasFritas },
-            { nombre: "Ovo na Chapa", descripcion: "", precio: P.huevo },
-          ],
-        },
-        {
-          icono: "🥗",
-          nombre: "Saladas",
-          nota: null,
-          items: [
-            {
-              nombre: "Salada Mista",
-              descripcion: "Alface, tomate e cebola",
-              precio: P.ensaladaMixta,
-            },
-            {
-              nombre: "Salada Completa",
-              descripcion: "Alface, tomate, cebola, cenoura e ovo",
-              precio: P.ensaladaCompleta,
-            },
-          ],
-        },
-        {
-          icono: "🌽",
-          nombre: "Especialidades da Casa",
-          nota: null,
-          items: [
-            {
-              nombre: "Bolinho de Mandioca Recheado",
-              descripcion: "Com queijo ou presunto e queijo",
-              precio: P.bombaMandioca,
-            },
-            {
-              nombre: "Omelete Recheado de Queijo e Tomate",
-              descripcion: "Com salada de alface e tomate",
-              precio: P.omelette,
-            },
-            {
-              nombre: "Porção de Sopa Paraguaia",
-              descripcion:
-                "Torta típica com farinha de milho, queijo, leite, ovo e cebola",
-              precio: P.sopaParaguaya,
-            },
-            {
-              nombre: "Porção de Chipa Guazú",
-              descripcion:
-                "Torta típica com milho verde, queijo, leite, ovo e cebola",
-              precio: P.chipaGuazu,
-            },
-          ],
-        },
-        {
-          icono: "🍮",
-          nombre: "Sobremesas",
-          nota: null,
-          items: [
-            {
-              nombre: "Mamão em Calda com Queijo",
-              descripcion: "",
-              precio: P.mamon,
-            },
-            { nombre: "Pudim", descripcion: "", precio: P.flan },
-            {
-              nombre: "Sorvete (bola)",
-              descripcion: "Erva-mate · Rosella · Jejy'a",
-              precio: P.heladoNativo,
-            },
-            {
-              nombre: "Sorvete (bola)",
-              descripcion: "Abacaxi · Doce de leite",
-              precio: P.heladoDulce,
-            },
-          ],
-        },
+        { icono: "🥤", nombre: "Bebidas sem Álcool", nota: null, items: [
+          { nombre: "Suco Natural de Laranja ou Limonada — Copo 350ml", descripcion: "", precio: P.jugoVaso },
+          { nombre: "Suco Natural — Jarra 1000ml", descripcion: "", precio: P.jugoJarra1000 },
+          { nombre: "Suco Natural — Jarra 1500ml", descripcion: "", precio: P.jugoJarra1500 },
+          { nombre: "Refrigerantes / Águas Saborizadas", descripcion: "", precio: P.gaseosas },
+          { nombre: "Água s/ gás - c/ gás", descripcion: "", precio: P.agua },
+        ]},
+        { icono: "🍺", nombre: "Cervejas", nota: null, items: [
+          { nombre: "Cerveja Lata (473ml)", descripcion: "", precio: P.cervezaLata },
+          { nombre: "Cerveja Artesanal Holy Lata (473ml)", descripcion: "", precio: P.cervezaArtesanal },
+        ]},
+        { icono: "🍷", nombre: "Vinhos", nota: null, items: [
+          { nombre: "Novecento (750ml)", descripcion: "", precio: P.novecento },
+          { nombre: "Chacabuco (750ml)", descripcion: "", precio: P.chacabuco },
+          { nombre: "Conejo Verde Malbec (750ml)", descripcion: "", precio: P.conejoMalbec },
+          { nombre: "Conejo Verde Chenin (750ml)", descripcion: "", precio: P.conejoChenin },
+        ]},
+        { icono: "🍹", nombre: "Drinks (400ml)", nota: null, items: [
+          { nombre: "Fernet Branca com Coca", descripcion: "", precio: P.fernet },
+          { nombre: "Daiquiri", descripcion: "Morango · Manga · Pêssego · Abacaxi", precio: P.daikiri },
+          { nombre: "Caipirinha", descripcion: "", precio: P.caipirinia },
+          { nombre: "Gin Tônica", descripcion: "", precio: P.ginTonic },
+        ]},
+        { icono: "☕", nombre: "Cafeteria", nota: null, items: [
+          { nombre: "Expresso Pequeno", descripcion: "", precio: P.expresoChico },
+          { nombre: "Expresso Duplo", descripcion: "", precio: P.expresoDoble },
+          { nombre: "Expresso Cortado Duplo", descripcion: "", precio: P.expresoCortado },
+          { nombre: "Lágrima", descripcion: "", precio: P.lagrima },
+          { nombre: "Café com Leite", descripcion: "", precio: P.cafeConLeche },
+          { nombre: "Chá ou Mate Cozido", descripcion: "", precio: P.te },
+        ]},
+        { icono: "🥩", nombre: "Pratos Principais", nota: null, items: [
+          { nombre: "Suprema com 1 acompanhamento", descripcion: "Salada mista, purê ou fritas", precio: P.suprema },
+          { nombre: "Suprema a cavalo ou Napo. com 1 acompanhamento", descripcion: "Salada mista, purê ou fritas", precio: P.supremaCaballo },
+          { nombre: "Milanesa com 1 acompanhamento", descripcion: "Salada mista, purê ou fritas", precio: P.milanesa },
+          { nombre: "Milanesa a cavalo ou Napo. com 1 acompanhamento", descripcion: "Salada mista, purê ou fritas", precio: P.milanesaCaballo },
+          { nombre: "Peito de frango grelhado com 1 acompanhamento", descripcion: "Salada mista, purê ou fritas", precio: P.pechugraGrille },
+          { nombre: "Carré de porco na chapa com 1 acompanhamento", descripcion: "Salada mista, purê ou fritas", precio: P.carreCerdo },
+          { nombre: "Filé Napo ou Peito Napo. com 1 acompanhamento", descripcion: "Salada mista, purê ou fritas", precio: P.lomoNapo },
+          { nombre: "Bife de chorizo na chapa com 1 acompanhamento", descripcion: "Salada mista, purê ou fritas", precio: P.bifeChorizo },
+          { nombre: "Peixe de rio c/ wok de legumes e mandioca frita", descripcion: "", precio: P.pescado },
+          { nombre: "Picada (para 2 pessoas)", descripcion: "500g de carne, sopa paraguaia, batatas e mandioca frita", precio: P.picada },
+        ]},
+        { icono: "🍝", nombre: "Massas Caseiras", nota: "Incluem um molho à escolha: bolonhesa, pesto, misto, branco, vermelho ou frango com molho branco", items: [
+          { nombre: "Nhoque", descripcion: "", precio: P.noquis },
+          { nombre: "Fetuccine", descripcion: "De ovo ou espinafre", precio: P.fetuccinni },
+          { nombre: "Sorrentinos de presunto e queijo", descripcion: "", precio: P.sorrentinos },
+          { nombre: "Ravióli recheado de verdura", descripcion: "", precio: P.ravioles },
+        ]},
+        { icono: "🥪", nombre: "Nossos Sanduíches", nota: null, items: [
+          { nombre: "Sanduíche de Presunto e Queijo", descripcion: "Pão caseiro, alface, tomate, presunto e queijo", precio: P.sandJyQ },
+          { nombre: "Hambúrguer Completo", descripcion: "Pão caseiro, hambúrguer artesanal, presunto, queijo, tomate, alface e ovo", precio: P.hamburguesa },
+          { nombre: "Sanduíche de Suprema ou Peito Grelhado", descripcion: "Pão caseiro, suprema ou peito grelhado, tomate, queijo e ovo", precio: P.sandSuprema },
+          { nombre: "Sanduíche de Milanesa Completo", descripcion: "Pão caseiro, milanesa de carne, alface, tomate, presunto e queijo", precio: P.sandMila },
+          { nombre: "Sanduíche Vegetariano", descripcion: "Pão caseiro, alface, tomate, pimentão, cebola, cenoura, abobrinha, queijo e ovo", precio: P.sandVegetariano },
+          { nombre: "Sanduíche de Filé Completo", descripcion: "Pão caseiro, filé de vitela, presunto, queijo, alface, tomate e ovo", precio: P.sandLomo },
+          { nombre: "Acompanhamento extra de fritas", descripcion: "Batata ou mandioca", precio: P.adicionalFritas },
+        ]},
+        { icono: "🍟", nombre: "Porções de Fritas", nota: null, items: [
+          { nombre: "Mandioca Frita", descripcion: "", precio: P.mandiocaFrita },
+          { nombre: "Batata Frita", descripcion: "", precio: P.papasFritas },
+          { nombre: "Ovo na Chapa", descripcion: "", precio: P.huevo },
+        ]},
+        { icono: "🥗", nombre: "Saladas", nota: null, items: [
+          { nombre: "Salada Mista", descripcion: "Alface, tomate e cebola", precio: P.ensaladaMixta },
+          { nombre: "Salada Completa", descripcion: "Alface, tomate, cebola, cenoura e ovo", precio: P.ensaladaCompleta },
+        ]},
+        { icono: "🌽", nombre: "Especialidades da Casa", nota: null, items: [
+          { nombre: "Bolinho de Mandioca Recheado", descripcion: "Com queijo ou presunto e queijo", precio: P.bombaMandioca },
+          { nombre: "Omelete Recheado de Queijo e Tomate", descripcion: "Com salada de alface e tomate", precio: P.omelette },
+          { nombre: "Porção de Sopa Paraguaia", descripcion: "Torta típica com farinha de milho, queijo, leite, ovo e cebola", precio: P.sopaParaguaya },
+          { nombre: "Porção de Chipa Guazú", descripcion: "Torta típica com milho verde, queijo, leite, ovo e cebola", precio: P.chipaGuazu },
+        ]},
+        { icono: "🍮", nombre: "Sobremesas", nota: null, items: [
+          { nombre: "Mamão em Calda com Queijo", descripcion: "", precio: P.mamon },
+          { nombre: "Pudim", descripcion: "", precio: P.flan },
+          { nombre: "Sorvete (bola)", descripcion: "Erva-mate · Rosella · Jejy'a", precio: P.heladoNativo },
+          { nombre: "Sorvete (bola)", descripcion: "Abacaxi · Doce de leite", precio: P.heladoDulce },
+        ]},
       ],
     },
   };
 
-  // ═══════════════════════════════════════════════════════════════
-  // RENDER
-  // ═══════════════════════════════════════════════════════════════
-  function render(lang) {
+  function render(lang: string) {
+    const menuEs = document.getElementById("menu-es")!;
+    const menuDynamic = document.getElementById("menu-container")!;
+    const footerEs = document.getElementById("carta-footer-es")!;
+    const footerDynamic = document.getElementById("carta-footer")!;
+
+    if (lang === "es") {
+      menuEs.classList.remove("hidden");
+      menuEs.style.display = "flex";
+      menuDynamic.classList.add("hidden");
+      footerEs.classList.remove("hidden");
+      footerDynamic.classList.add("hidden");
+      return;
+    }
+
+    menuEs.classList.add("hidden");
+    menuDynamic.classList.remove("hidden");
+    menuDynamic.style.display = "flex";
+    footerEs.classList.add("hidden");
+    footerDynamic.classList.remove("hidden");
+
     const d = menu[lang];
 
-    document.getElementById("carta-footer").innerHTML = d.footer
+    footerDynamic.innerHTML = d.footer
       .map((f) => `<p class="footer-texto">${f}</p>`)
       .join("");
 
-    document.getElementById("menu-container").innerHTML = d.categorias
+    menuDynamic.innerHTML = d.categorias
       .map(
         (cat, i) => `
         <div class="categoria" style="animation-delay:${i * 0.05}s">
           <div class="cat-header">
             <span class="cat-icono">${cat.icono}</span>
-            <h3 class="cat-nombre">${cat.nombre}</h3>
+            <h2 class="cat-nombre">${cat.nombre}</h2>
             <div class="cat-linea"></div>
           </div>
           ${cat.nota ? `<p class="cat-nota">★ ${cat.nota}</p>` : ""}
           <div>
             ${cat.items
               .map(
-                (item) => `
+                (item: any) => `
               <div class="item">
                 <div>
                   <p class="item-nombre">${item.nombre}</p>
@@ -1583,9 +743,7 @@ import LayoutCarta from "../layouts/LayoutCarta.astro";
         .querySelectorAll(".lang-btn")
         .forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
-      render(btn.dataset.lang);
+      render((btn as HTMLElement).dataset.lang!);
     });
   });
-
-  render("es");
 </script>
