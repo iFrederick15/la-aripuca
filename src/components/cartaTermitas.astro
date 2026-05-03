@@ -689,12 +689,15 @@ const footerEs = [
       menuEs.classList.remove("hidden");
       menuEs.style.display = "flex";
       menuDynamic.classList.add("hidden");
+      menuDynamic.style.display = "none";
       footerEs.classList.remove("hidden");
       footerDynamic.classList.add("hidden");
+      footerDynamic.style.display = "none";
       return;
     }
 
     menuEs.classList.add("hidden");
+    menuEs.style.display = "none";
     menuDynamic.classList.remove("hidden");
     menuDynamic.style.display = "flex";
     footerEs.classList.add("hidden");
