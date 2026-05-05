@@ -4,7 +4,7 @@ excerpt: "Planeás tu viaje a Iguazú y no sabés por dónde empezar? Esta guía
 date: 2026-04-12
 image: "/images/cataratas-de-iguazu.jpg"
 imageAlt: "Cataratas del Iguazú y selva misionera"
-category: "Turismo en Iguazú"
+category: "Que hacer en Iguazú"
 readTime: "8 min"
 ---
 
