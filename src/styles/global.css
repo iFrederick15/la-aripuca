@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .buttonHeader {
-  @apply font-title rounded-xl bg-[#ABA30A] px-6 py-3 font-bold text-white shadow transition-all hover:text-white hover:shadow-xl;
+  @apply font-title rounded-xl bg-primary px-6 py-3 font-bold text-white shadow transition-all hover:text-white hover:shadow-xl;
 }
 .buttonHero {
   @apply font-title rounded-lg px-4 py-2 text-sm font-bold transition-all duration-300 hover:shadow-lg sm:rounded-xl sm:px-8 sm:py-4 sm:text-lg;
@@ -39,7 +39,7 @@
 
 @theme {
   --color-primary: #c25430;
-  --color-secondary: #aba30a;
+  --color-secondary: #b8960c;
   --color-acento: #bfb065;
   --color-fondo: #f2f2f2;
 
