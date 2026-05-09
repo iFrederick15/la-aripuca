@@ -1,0 +1,85 @@
+<!-- BIENVENIDO -->
+<section class="bienvenido-section relative flex min-h-[100svh] w-full items-end justify-center overflow-hidden">
+  <!-- Fondo: sendero de entrada al parque -->
+  <img
+    class="absolute inset-0 h-full w-full object-cover object-center"
+    src="/images/hero-aripuca.jpg"
+    alt="Sendero de ingreso a La Aripuca rodeado de selva misionera"
+    loading="lazy"
+  />
+
+  <!-- Overlays cálidos -->
+  <div class="absolute inset-0 bg-linear-to-b from-black/20 via-black/10 to-black/80"></div>
+  <div class="absolute inset-0 bg-linear-to-r from-[#2a0e00]/40 via-transparent to-[#2a0e00]/40"></div>
+
+  <!-- Línea superior -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#BFB065]/50 to-transparent"></div>
+
+  <!-- Contenido -->
+  <div class="bienvenido-content relative z-10 flex w-full max-w-3xl flex-col items-center px-6 pb-14 pt-8 text-center">
+
+    <!-- Título principal -->
+    <h2 class="bv-title font-title mb-5 text-5xl font-black uppercase leading-none tracking-wider text-white sm:text-6xl md:text-7xl"
+      style="text-shadow: 0 0 60px rgba(191,176,101,0.25), 0 6px 30px rgba(0,0,0,0.95)"
+    >
+      Bien<span class="text-[#D4A017]" style="text-shadow: 0 0 50px rgba(212,160,23,0.4), 0 6px 30px rgba(0,0,0,0.95)">venido</span>
+    </h2>
+
+    <!-- Divisor -->
+    <div class="bv-divider my-5 flex items-center gap-3">
+      <div class="h-px w-10 bg-[#BFB065]/45 sm:w-16"></div>
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="opacity-70">
+        <path d="M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z" fill="#BFB065"/>
+      </svg>
+      <div class="h-px w-10 bg-[#BFB065]/45 sm:w-16"></div>
+    </div>
+
+    <!-- Texto -->
+    <p class="bv-text font-title mb-3 text-base italic leading-relaxed text-white/85 sm:text-lg md:text-xl">
+      Este sendero es el primer abrazo de la selva misionera.
+    </p>
+    <p class="bv-sub font-title text-sm leading-relaxed text-white/60 md:text-base">
+      Cada paso te acerca a una experiencia única en su género,<br class="hidden sm:block" /> donde la naturaleza y la creatividad humana se encuentran.
+    </p>
+
+  </div>
+
+  <!-- Línea inferior -->
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#BFB065]/50 to-transparent"></div>
+</section>
+
+<style>
+  .bv-title {
+    animation: bvFadeDown 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 50%;
+  }
+  .bv-divider {
+    animation: bvFadeIn 0.8s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 10% entry 55%;
+  }
+  .bv-text {
+    animation: bvFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 15% entry 60%;
+  }
+  .bv-sub {
+    animation: bvFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 20% entry 65%;
+  }
+
+  @keyframes bvFadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bvFadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bvFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+</style>
