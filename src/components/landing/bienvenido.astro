@@ -1,8 +1,8 @@
 <!-- BIENVENIDO -->
-<section class="bienvenido-section relative flex min-h-[100svh] w-full items-end justify-center overflow-hidden">
+<section class="bienvenido-section relative flex w-full items-end justify-center overflow-hidden">
   <!-- Fondo: sendero de entrada al parque -->
   <img
-    class="absolute inset-0 h-full w-full object-cover object-center"
+    class="bv-bg absolute inset-0 h-full w-full object-cover object-center"
     src="/images/hero-aripuca.jpg"
     alt="Sendero de ingreso a La Aripuca rodeado de selva misionera"
     loading="lazy"
@@ -12,8 +12,8 @@
   <div class="absolute inset-0 bg-linear-to-b from-black/20 via-black/10 to-black/80"></div>
   <div class="absolute inset-0 bg-linear-to-r from-[#2a0e00]/40 via-transparent to-[#2a0e00]/40"></div>
 
-  <!-- Línea superior -->
-  <div class="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#BFB065]/50 to-transparent"></div>
+  <!-- Top fade: continuación del negro del hero -->
+  <div class="pointer-events-none absolute top-0 left-0 right-0 h-48 bg-linear-to-b from-black to-transparent"></div>
 
   <!-- Contenido -->
   <div class="bienvenido-content relative z-10 flex w-full max-w-3xl flex-col items-center px-6 pb-14 pt-8 text-center">
@@ -49,6 +49,16 @@
 </section>
 
 <style>
+  .bienvenido-section {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  /* iOS Safari fix: GPU compositing prevents overflow-hidden clipping the absolute image */
+  .bv-bg {
+    transform: translate3d(0, 0, 0);
+  }
+
   .bv-title {
     animation: bvFadeDown 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
     animation-timeline: view();
